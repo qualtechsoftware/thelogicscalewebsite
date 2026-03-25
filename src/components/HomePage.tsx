@@ -31,7 +31,7 @@ export default function HomePage() {
               </p>
               <div className="actions">
                 <a className="button btn-primary" href="#programs">Explore Programs →</a>
-                <a className="button btn-outline" href="/about">Why Choose Us</a>
+                <a className="button btn-outline" href="/#why-us">Why Choose Us</a>
               </div>
               <div className="hero-stats">
                 <div className="stat"><span className="stat-num">1000+</span><span className="stat-label">Learners Trained</span></div>
