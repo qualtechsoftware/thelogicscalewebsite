@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="The Logic Scale">
+  <defs>
+    <style>
+      .circuit-orange { stroke: #f97316; }
+      .circuit-blue { stroke: #0ea5e9; }
+      .node-orange { fill: #f97316; }
+      .node-blue { fill: #0ea5e9; }
+      .head-blue { fill: #0b4b78; }
+    </style>
+  </defs>
+
+  <!-- Simplified “head + circuit” icon (logo-aligned, minimal) -->
+  <path
+    class="head-blue"
+    d="M40.5 14.8c-5-3.2-12.8-2-17.2 3.4-4.2 5.1-5.2 12.5-2.4 18.4 2.6 5.3 8.1 9 14.1 8.3 6.5-.8 11.4-6.2 12.2-13 1-8-3.2-14.7-6.7-17.1Z"
+  />
+
+  <!-- Circuit lines -->
+  <g fill="none" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+    <path class="circuit-orange" d="M15.8 26.5l8.2 0.2 4.7 5.1 7.2-6.4 5.4 2.2" />
+    <path class="circuit-blue" d="M22.3 20.6l6.4 5.6 8.3-2.3 5.2 6.4" />
+    <path class="circuit-orange" d="M16.8 36.2l7.1-3 3.4 4.9 10.1 2.2" />
+    <path class="circuit-blue" d="M30.7 26.7l-2.3 7.2 5.8 4.6 5.2-3.1" />
+  </g>
+
+  <!-- Circuit nodes -->
+  <g>
+    <circle class="node-orange" cx="16.1" cy="26.6" r="3.0" />
+    <circle class="node-blue" cx="24.2" cy="26.7" r="2.6" />
+    <circle class="node-orange" cx="29.0" cy="31.8" r="2.7" />
+    <circle class="node-blue" cx="36.2" cy="25.4" r="2.6" />
+    <circle class="node-orange" cx="41.6" cy="27.6" r="2.5" />
+
+    <circle class="node-blue" cx="22.6" cy="20.8" r="2.5" />
+    <circle class="node-orange" cx="28.9" cy="26.4" r="2.6" />
+    <circle class="node-blue" cx="37.2" cy="24.1" r="2.5" />
+    <circle class="node-orange" cx="42.4" cy="30.5" r="2.6" />
+
+    <circle class="node-orange" cx="17.1" cy="36.3" r="2.7" />
+    <circle class="node-blue" cx="24.2" cy="33.3" r="2.4" />
+    <circle class="node-orange" cx="27.6" cy="38.2" r="2.4" />
+    <circle class="node-blue" cx="37.7" cy="40.4" r="2.6" />
+  </g>
+</svg>
+

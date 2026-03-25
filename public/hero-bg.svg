@@ -1,0 +1,56 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0A2B53"/>
+      <stop offset="100%" stop-color="#05182F"/>
+    </linearGradient>
+    <radialGradient id="glowBlue" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1080 450) rotate(8) scale(560 360)">
+      <stop stop-color="#2B8FD1" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#2B8FD1" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowOrange" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1180 660) rotate(-16) scale(460 260)">
+      <stop stop-color="#F39A1F" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#F39A1F" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="46" height="46" patternUnits="userSpaceOnUse">
+      <path d="M46 0H0V46" stroke="#7EAED8" stroke-opacity="0.09"/>
+    </pattern>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+  <rect width="1600" height="900" fill="url(#glowBlue)"/>
+  <rect width="1600" height="900" fill="url(#glowOrange)"/>
+
+  <!-- world globe -->
+  <g opacity="0.45" transform="translate(1040 170)">
+    <circle cx="250" cy="250" r="220" stroke="#62B8F1" stroke-width="2.4"/>
+    <ellipse cx="250" cy="250" rx="170" ry="220" stroke="#62B8F1" stroke-width="1.8"/>
+    <ellipse cx="250" cy="250" rx="110" ry="220" stroke="#62B8F1" stroke-width="1.8"/>
+    <ellipse cx="250" cy="250" rx="220" ry="170" stroke="#62B8F1" stroke-width="1.8"/>
+    <ellipse cx="250" cy="250" rx="220" ry="110" stroke="#62B8F1" stroke-width="1.8"/>
+    <path d="M58 170C150 185 180 120 258 132C330 142 375 188 450 176" stroke="#62B8F1" stroke-width="2"/>
+    <path d="M72 300C148 320 200 300 256 330C318 362 368 330 430 350" stroke="#62B8F1" stroke-width="2"/>
+    <circle cx="250" cy="250" r="6" fill="#F7B24B"/>
+    <circle cx="176" cy="194" r="5" fill="#F7B24B"/>
+    <circle cx="328" cy="308" r="5" fill="#F7B24B"/>
+  </g>
+
+  <!-- cloud icon around globe -->
+  <g opacity="0.5">
+    <path d="M1076 632C1088 566 1139 524 1202 524C1248 524 1289 548 1310 584C1318 582 1326 580 1335 580C1387 580 1429 622 1429 674C1429 726 1387 768 1335 768H1130C1074 768 1028 722 1028 666C1028 614 1068 571 1118 566C1129 543 1153 524 1184 524" stroke="#86CFF9" stroke-width="4"/>
+    <path d="M1135 705H1328" stroke="#86CFF9" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="1178" cy="705" r="6" fill="#86CFF9"/>
+    <circle cx="1232" cy="705" r="6" fill="#86CFF9"/>
+    <circle cx="1286" cy="705" r="6" fill="#86CFF9"/>
+  </g>
+
+  <!-- subtle tech lines -->
+  <g opacity="0.35">
+    <path d="M40 700C260 640 430 690 640 610C840 535 1000 582 1185 510C1360 440 1490 470 1580 430" stroke="#5EB3ED" stroke-width="2.2"/>
+    <path d="M70 790C280 730 470 760 670 690C870 620 1060 655 1260 570C1400 510 1510 520 1590 490" stroke="#F3A739" stroke-width="2"/>
+    <circle cx="40" cy="700" r="4.5" fill="#5EB3ED"/>
+    <circle cx="640" cy="610" r="4.5" fill="#5EB3ED"/>
+    <circle cx="1185" cy="510" r="4.5" fill="#5EB3ED"/>
+  </g>
+</svg>
