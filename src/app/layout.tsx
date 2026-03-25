@@ -24,12 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <SiteHeader />
-        {children}
-        <Footer />
-        <ScrollToTopButton />
-        <WhatsAppFloat />
+      <head>
         {/* Google Analytics (gtag.js) */}
         <Script
           async
@@ -47,6 +42,13 @@ export default function RootLayout({
             `
           }}
         />
+      </head>
+      <body>
+        <SiteHeader />
+        {children}
+        <Footer />
+        <ScrollToTopButton />
+        <WhatsAppFloat />
       </body>
     </html>
   );
