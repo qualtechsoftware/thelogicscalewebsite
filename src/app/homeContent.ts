@@ -19,6 +19,8 @@ export type CatalogCourse = {
   audience: string;
   /** Official exam or credential context (omit if not certification-focused) */
   certification?: string;
+  /** Highlight as a flagship / recommended program on catalog cards */
+  recommended?: boolean;
   tags: string[];
   curriculum: string[];
 };
@@ -26,6 +28,7 @@ export type CatalogCourse = {
 export const trustPillars = [
   {
     num: "01",
+    icon: "/icons/trust-industry.png",
     color: "#0ea5e9",
     title: "Industry-Led Curriculum",
     details:
@@ -33,6 +36,7 @@ export const trustPillars = [
   },
   {
     num: "02",
+    icon: "/icons/trust-project.png",
     color: "#f59e0b",
     title: "Project-Based Learning",
     details:
@@ -40,6 +44,7 @@ export const trustPillars = [
   },
   {
     num: "03",
+    icon: "/icons/trust-career.png",
     color: "#22c55e",
     title: "Job Readiness Focus",
     details:
@@ -47,6 +52,7 @@ export const trustPillars = [
   },
   {
     num: "04",
+    icon: "/icons/trust-flexible.png",
     color: "#a855f7",
     title: "Flexible Learning",
     details:
@@ -101,6 +107,7 @@ export const courseCatalog: CatalogCourse[] = [
     duration: "10 Weeks",
     level: "Intermediate",
     levelColor: "#f59e0b",
+    recommended: true,
     details: "Master building and deploying cloud-native applications using the full suite of AWS developer services.",
     overview:
       "Go deep on building and operating applications on AWS: serverless, APIs, data stores, messaging, auth, and CI/CD. You’ll ship realistic features in labs and prepare systematically for the AWS Certified Developer – Associate (DVA-C02) exam.",
@@ -232,6 +239,49 @@ export const courseCatalog: CatalogCourse[] = [
       "RAG, vector stores, and AI API design in Java",
       "Capstone: end-to-end application with backend + AI features"
     ]
+  },
+  {
+    slug: "java-full-stack-developer",
+    color: "#2563eb",
+    image: null,
+    examCode: "Java 21",
+    badge: "Full Stack",
+    title: "Java Full Stack Developer",
+    duration: "16 Weeks",
+    level: "Intermediate",
+    levelColor: "#f59e0b",
+    recommended: true,
+    details:
+      "Become a job-ready full stack engineer — Java 21, Spring Boot APIs, and React.js frontends, with real projects you can ship and show.",
+    overview:
+      "A practical full stack path built for modern product teams: master Java 21 language features, design secure Spring Boot backends, and build responsive React.js UIs that consume your APIs. You’ll work through layered architecture, auth, databases, state management, and a portfolio-ready capstone.",
+    outcomes: [
+      "Write modern Java 21 code with records, virtual threads awareness, and clean OOP/design patterns.",
+      "Build production-style Spring Boot REST APIs with JPA, validation, and Spring Security.",
+      "Create React.js frontends with hooks, routing, and API integration against your backend.",
+      "Deliver an end-to-end full stack project with auth, CRUD flows, and deployment basics."
+    ],
+    format:
+      "Live mentor-led sessions, hands-on labs for backend and frontend, weekly milestones, code reviews, and a guided full stack capstone.",
+    audience:
+      "Students, graduates, and working professionals who want a complete Java + Spring Boot + React skill set for full stack roles.",
+    tags: ["Java 21", "Spring Boot", "React.js"],
+    curriculum: [
+      "Java 21 language deep dive: syntax, OOP, and modern features",
+      "Collections, generics, Streams, Optional, and date/time API",
+      "Exception handling, logging, and concurrency fundamentals",
+      "SQL + relational modeling for full stack applications",
+      "Spring Boot foundations: DI, starters, configuration, profiles",
+      "REST API design, validation, DTOs, and error contracts",
+      "JPA/Hibernate, relationships, queries, pagination, and transactions",
+      "Spring Security, JWT, roles, and secure API patterns",
+      "Testing Spring apps: unit, slice, and integration tests",
+      "React.js fundamentals: components, JSX, props, and state",
+      "Hooks, routing, forms, and client-side data fetching",
+      "Full stack integration: auth, CRUD, and state management",
+      "Git, CI basics, Docker, and deploy backend + React",
+      "Capstone: production-style Java 21 + Spring Boot + React app"
+    ]
   }
 ];
 
@@ -244,20 +294,30 @@ export const instructors = [
     photo: "/priyanjay-goswami.png",
     name: "Priyanjay Goswami",
     role: "Java Full-Stack Architect",
-    company: "Capgemini (HSBC)",
+    company: "Ex-Morgan Stanley",
     certification: "Certified AWS Developer & Solutions Architect",
     bio: "8+ years of experience | Ex–Morgan Stanley, BNP Paribas | AWS Certified, Building engineers who ship real products — not just pass exams.",
     tags: ["AWS", "Spring Boot", "Spring AI", "Microservices", "Full Stack"],
     linkedin: "https://www.linkedin.com/in/priyanjay-goswami-5a5098123/"
-  },
-  {
-    photo: "/naveen-upadhyay.png",
-    name: "Naveen Upadhyay",
-    role: "RPA Architect",
-    company: "IPA (RPA+AI)",
-    certification: "Certified RPA UiPath Expert",
-    bio: "12+ years of experience | Certified RPA UiPath Expert | Trainer · Lead Consultant & Technical Architect · Mentor — Pune, Maharashtra.",
-    tags: ["AI", "RPA", "UiPath", "Automation"],
-    linkedin: "https://www.linkedin.com/in/naveen-upadhyay-406a40124/"
   }
 ];
+
+/** Mid-size and growing product/IT companies across Indore & Pune hiring network */
+export const hiringPartners = [
+  { name: "InfoBeans", city: "Indore", focus: "Digital Engineering", size: "Mid-size", logo: "/partners/infobeans.png", logoTone: "light" as const },
+  { name: "Systango", city: "Indore", focus: "Product Engineering", size: "Mid-size", logo: "/partners/systango.svg", logoTone: "light" as const },
+  { name: "Softweb Solutions", city: "Indore", focus: "IoT & Cloud", size: "Mid-size", logo: "/partners/softweb.svg", logoTone: "light" as const },
+  { name: "Credencys", city: "Indore", focus: "Digital Transformation", size: "Growing", logo: "/partners/credencys.png", logoTone: "dark" as const },
+  { name: "Newput", city: "Indore", focus: "Custom Software", size: "Growing", logo: "/partners/newput.svg", logoTone: "light" as const },
+  { name: "Consagous", city: "Indore", focus: "Mobile & Cloud Apps", size: "Growing", logo: "/partners/consagous.svg", logoTone: "light" as const },
+  { name: "Deqode", city: "Indore", focus: "Blockchain & Web3", size: "Growing", logo: "/partners/deqode.svg", logoTone: "light" as const },
+  { name: "Infograins", city: "Indore", focus: "Software Services", size: "Growing", logo: "/partners/infograins.svg", logoTone: "light" as const },
+  { name: "Josh Software", city: "Pune", focus: "Ruby & Cloud Apps", size: "Mid-size", logo: "/partners/josh.svg", logoTone: "light" as const },
+  { name: "Softude", city: "Pune", focus: "Product Development", size: "Growing", logo: "/partners/softude.svg", logoTone: "light" as const },
+  { name: "Embitel", city: "Pune", focus: "Automotive & IoT", size: "Mid-size", logo: "/partners/embitel.svg", logoTone: "light" as const },
+  { name: "SpringCT", city: "Pune", focus: "Enterprise Software", size: "Growing", logo: "/partners/springct.svg", logoTone: "light" as const },
+  { name: "Webonise", city: "Pune", focus: "Digital Products", size: "Growing", logo: "/partners/webonise.svg", logoTone: "light" as const },
+  { name: "Harbinger Group", city: "Pune", focus: "Learning & EdTech", size: "Mid-size", logo: "/partners/harbinger.svg", logoTone: "light" as const },
+  { name: "GS Lab", city: "Pune", focus: "Product Engineering", size: "Mid-size", logo: "/partners/gslab.svg", logoTone: "light" as const },
+  { name: "Talentica", city: "Pune", focus: "Product Development", size: "Mid-size", logo: "/partners/talentica.svg", logoTone: "light" as const }
+] as const;

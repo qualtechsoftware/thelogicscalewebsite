@@ -6,7 +6,8 @@ import TypewriterText from "@/components/TypewriterText";
 import FallbackImg from "@/components/FallbackImg";
 import CourseCatalogGrid from "@/components/CourseCatalogGrid";
 import { InstructorTagList } from "@/components/TagLists";
-import { instructors, trustPillars } from "@/app/homeContent";
+import { hiringPartners, instructors, trustPillars } from "@/app/homeContent";
+
 
 export default function HomePage() {
   return (
@@ -38,7 +39,7 @@ export default function HomePage() {
                 <div className="stat-divider" />
                 <div className="stat"><span className="stat-num">4.9★</span><span className="stat-label">Average Rating</span></div>
                 <div className="stat-divider" />
-                <div className="stat"><span className="stat-num">10+</span><span className="stat-label">Expert Mentors</span></div>
+                <div className="stat"><span className="stat-num">10+</span><span className="stat-label">Expert Trainers</span></div>
               </div>
             </div>
 
@@ -67,7 +68,12 @@ export default function HomePage() {
                 className="trust-card"
                 style={{ "--card-accent": pillar.color } as CSSProperties}
               >
-                <span className="trust-num">{pillar.num}</span>
+                <div className="trust-card-top">
+                  <span className="trust-icon" aria-hidden="true">
+                    <img src={pillar.icon} alt="" width={56} height={56} />
+                  </span>
+                  <span className="trust-num">{pillar.num}</span>
+                </div>
                 <h3>{pillar.title}</h3>
                 <p>{pillar.details}</p>
               </article>
@@ -91,9 +97,9 @@ export default function HomePage() {
         <div className="container">
           <div className="mentors-header">
             <div className="section-header">
-              <p className="section-tag mentors-tag">Our Mentors</p>
+              <p className="section-tag mentors-tag">Our Trainers</p>
               <h2>Learn from Engineers Who Build at Scale</h2>
-              <p className="section-intro">Our mentors are active software professionals — not just teachers. They bring real delivery experience into every session.</p>
+              <p className="section-intro">Our trainers are active software professionals — not just teachers. They bring real delivery experience into every session.</p>
             </div>
           </div>
           <div className="instructors-grid">
@@ -129,6 +135,52 @@ export default function HomePage() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section id="hiring-partners" className="section-wrapper hiring-partners-section">
+        <div className="container">
+          <div className="section-header hiring-partners-header">
+            <p className="section-tag hiring-partners-tag">Hiring Partners</p>
+            <h2>Our Local Hiring Partners</h2>
+            <p className="section-intro">
+              Product and IT teams in Indore and Pune that hire for Java, Spring, cloud, and full stack skills — the network we train you for.
+            </p>
+          </div>
+
+          {(["Indore", "Pune"] as const).map((city) => {
+            const cityPartners = hiringPartners.filter((p) => p.city === city);
+            return (
+              <div key={city} className="hiring-partners-city-block">
+                <div className="hiring-partners-city-label">
+                  <span className="hiring-partners-city-dot" aria-hidden="true" />
+                  <h3>{city}</h3>
+                </div>
+                <div className="hiring-partners-grid">
+                  {cityPartners.map((partner) => (
+                    <article key={partner.name} className="hiring-partner-card">
+                      <div
+                        className={`hiring-partner-logo-plate${
+                          partner.logoTone === "dark" ? " hiring-partner-logo-plate--dark" : ""
+                        }`}
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={partner.logo} alt="" className="hiring-partner-logo" />
+                      </div>
+                      <div className="hiring-partner-meta">
+                        <h4 className="hiring-partner-name">{partner.name}</h4>
+                        <p className="hiring-partner-focus">{partner.focus}</p>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+
+          <p className="hiring-partners-note">
+            Interview prep and local introductions across this network. Roles depend on cohort timing and fit.
+          </p>
         </div>
       </section>
 

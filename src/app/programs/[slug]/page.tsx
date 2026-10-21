@@ -124,6 +124,21 @@ export default async function ProgramDetailPage({ params }: Props) {
       "Spring AI (chat + RAG + vector stores)",
       "AI API design + production readiness",
       "Capstone: backend + AI feature delivery"
+    ],
+    "java-full-stack-developer": [
+      "Java 21 language features + modern APIs",
+      "OOP, collections, streams, and exception handling",
+      "SQL + relational data modeling",
+      "Spring Boot REST APIs + validation",
+      "JPA/Hibernate + transactions + pagination",
+      "Spring Security + JWT authentication",
+      "Backend testing (unit/integration)",
+      "React.js components, hooks, and routing",
+      "Forms, client fetching, and protected routes",
+      "Frontend–backend API integration",
+      "State management patterns for medium apps",
+      "Git, Docker, and deployment basics",
+      "Capstone: end-to-end full stack application"
     ]
   };
 
@@ -603,6 +618,210 @@ export default async function ProgramDetailPage({ params }: Props) {
           "Portfolio-ready final presentation"
         ]
       }
+    ],
+    "java-full-stack-developer": [
+      {
+        title: "Java 21 language & tooling",
+        topics: [
+          "JDK, JVM, bytecode, and project setup (Maven/Gradle overview)",
+          "Types, operators, control flow, and methods",
+          "Packages, modules overview, and code organization",
+          "String handling, text blocks, and formatting",
+          "Enums, annotations, and var usage guidelines",
+          "Debugging in the IDE and reading stack traces"
+        ]
+      },
+      {
+        title: "Object-oriented design in Java",
+        topics: [
+          "Classes, objects, constructors, and encapsulation",
+          "Inheritance, polymorphism, and abstract classes",
+          "Interfaces, default methods, and composition over inheritance",
+          "Immutability patterns and defensive copying",
+          "SOLID principles applied to Java services",
+          "Common design patterns: Factory, Strategy, Builder, Singleton (practical use)"
+        ]
+      },
+      {
+        title: "Modern Java 21 features",
+        topics: [
+          "Records for DTOs and value types",
+          "Sealed classes and when to use them",
+          "Pattern matching for instanceof and switch",
+          "Enhanced switch expressions",
+          "Virtual threads awareness for concurrent I/O-style workloads",
+          "Sequenced collections and useful library updates"
+        ]
+      },
+      {
+        title: "Collections, generics & Streams",
+        topics: [
+          "List, Set, Map, Queue — choosing the right structure",
+          "Generics, wildcards, and type safety",
+          "Equals/hashCode contracts and Map/Set pitfalls",
+          "Streams API: map, filter, reduce, collect, grouping",
+          "Optional usage guidelines (avoid anti-patterns)",
+          "java.time API for dates, times, and zones"
+        ]
+      },
+      {
+        title: "Exceptions, I/O & concurrency basics",
+        topics: [
+          "Checked vs unchecked exceptions and custom exceptions",
+          "try-with-resources and Autocloseable",
+          "Logging with SLF4J/Logback patterns",
+          "File/NIO basics for application data",
+          "Threads, ExecutorService, and CompletableFuture intro",
+          "Race conditions, synchronization mindset, and thread-safety tips"
+        ]
+      },
+      {
+        title: "SQL & relational modeling",
+        topics: [
+          "Tables, keys, constraints, and normalization basics",
+          "Joins, indexes, and query performance mindset",
+          "CRUD SQL and aggregations",
+          "Transactions at the database level (ACID overview)",
+          "ER diagrams for application domains",
+          "Connecting apps to PostgreSQL/MySQL locally"
+        ]
+      },
+      {
+        title: "Spring Boot foundations",
+        topics: [
+          "Spring vs Spring Boot and auto-configuration",
+          "Dependency Injection, beans, and component scanning",
+          "application.yml/properties, profiles, and externalized config",
+          "Actuator health endpoints overview",
+          "Layered architecture: controller → service → repository",
+          "Project structure conventions for maintainable apps"
+        ]
+      },
+      {
+        title: "REST API engineering with Spring",
+        topics: [
+          "HTTP methods, status codes, and REST resource design",
+          "Controllers, request/response mapping, and path variables",
+          "DTOs vs entities and mapping strategies",
+          "Bean Validation (Jakarta Validation) annotations",
+          "Global exception handling (@ControllerAdvice)",
+          "Consistent API error payloads and pagination envelopes",
+          "OpenAPI/Swagger documentation for consumers"
+        ]
+      },
+      {
+        title: "Persistence with JPA/Hibernate",
+        topics: [
+          "Entity mapping, IDs, and lifecycle callbacks",
+          "Relationships: OneToMany, ManyToOne, ManyToMany, JoinTable",
+          "Fetch types, N+1 problem, and join fetch strategies",
+          "Spring Data JPA repositories and derived queries",
+          "JPQL, native queries, Specifications/Criteria intro",
+          "Pagination, sorting, and projections",
+          "Transactions (@Transactional), isolation awareness, and rollback rules",
+          "Schema migration concepts (Flyway/Liquibase)"
+        ]
+      },
+      {
+        title: "Spring Security & JWT",
+        topics: [
+          "Authentication vs authorization concepts",
+          "Spring Security filter chain and SecurityFilterChain config",
+          "Password encoding (BCrypt) and user details service",
+          "JWT access tokens and refresh token flow design",
+          "Role/permission-based access (@PreAuthorize patterns)",
+          "Securing endpoints and method-level security",
+          "CORS configuration for React clients",
+          "Common security pitfalls: secrets, token storage, CSRF for APIs"
+        ]
+      },
+      {
+        title: "Backend testing & quality",
+        topics: [
+          "JUnit 5 and AssertJ basics",
+          "Mockito for service-layer unit tests",
+          "Spring Boot test slices (@WebMvcTest, @DataJpaTest)",
+          "@SpringBootTest integration testing approach",
+          "Testcontainers mindset for DB-backed tests (overview)",
+          "Readable test naming and Arrange-Act-Assert"
+        ]
+      },
+      {
+        title: "React.js fundamentals",
+        topics: [
+          "SPA mental model and project setup (Vite/CRA overview)",
+          "JSX, components, props, and composition",
+          "State vs props and lifting state up",
+          "Lists, keys, and conditional rendering",
+          "Events, forms, and controlled components",
+          "Component structure and folder conventions"
+        ]
+      },
+      {
+        title: "React hooks, routing & UI flows",
+        topics: [
+          "useState, useEffect, useRef, useMemo, useCallback",
+          "Custom hooks for reusable logic",
+          "React Router: routes, nested layouts, navigate",
+          "Protected routes and auth-aware navigation",
+          "Form handling patterns and client validation",
+          "Loading, empty, and error UI states"
+        ]
+      },
+      {
+        title: "Calling Spring APIs from React",
+        topics: [
+          "fetch/axios patterns and base URL config",
+          "Async data loading and cancellation awareness",
+          "Auth headers, token storage strategies, and logout",
+          "Handling 401/403 and refresh token UX",
+          "File upload/download basics (optional lab)",
+          "Environment variables for local vs production"
+        ]
+      },
+      {
+        title: "State management & full stack features",
+        topics: [
+          "Local state vs Context API vs lightweight global stores",
+          "End-to-end CRUD feature delivery",
+          "Search, filter, sort, and pagination on UI + API",
+          "Optimistic UI updates and rollback patterns",
+          "Toast/notification patterns and user feedback",
+          "Accessibility and responsive layout basics"
+        ]
+      },
+      {
+        title: "Git, collaboration & DevOps starters",
+        topics: [
+          "Git branching, commits, and pull request workflows",
+          "Code review checklist for full stack PRs",
+          "Dockerizing Spring Boot services",
+          "Serving React builds and reverse-proxy basics",
+          "CI pipeline overview (build, test, artifact)",
+          "Logging, health checks, and basic monitoring"
+        ]
+      },
+      {
+        title: "Interview & professional readiness",
+        topics: [
+          "Explaining full stack architecture in interviews",
+          "Common Java + Spring + React interview themes",
+          "Reading and debugging production-like stack traces",
+          "Writing a clear README and project demo script",
+          "Portfolio presentation: what recruiters look for"
+        ]
+      },
+      {
+        title: "Capstone: Java Full Stack product",
+        topics: [
+          "Requirements workshop and domain modeling",
+          "API contract design + database schema",
+          "Spring Boot backend with security and core modules",
+          "React frontend with auth and primary user journeys",
+          "End-to-end testing of critical flows",
+          "Deployment walkthrough + final demo and code review"
+        ]
+      }
     ]
   };
 
@@ -704,9 +923,12 @@ export default async function ProgramDetailPage({ params }: Props) {
             <span className="course-detail-hero-badge">{course.badge}</span>
           </div>
           <div className="course-detail-hero-body">
-            <p className="course-detail-eyebrow">Training program</p>
+            <p className="course-detail-eyebrow">
+              {course.recommended ? "Recommended program" : "Training program"}
+            </p>
             <h1 className="course-detail-title">{course.title}</h1>
             <div className="course-detail-meta-row">
+              {course.recommended ? <span className="course-featured-pill">Most chosen</span> : null}
               <span className="course-detail-meta duration-badge">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="12" height="12" aria-hidden="true">
                   <circle cx="12" cy="12" r="10" />
