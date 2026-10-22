@@ -19,11 +19,66 @@ export type CatalogCourse = {
   audience: string;
   /** Official exam or credential context (omit if not certification-focused) */
   certification?: string;
+  /** Share of learners who cleared this certification (e.g. "100%") */
+  passRate?: string;
+  /** Share of learners placed after the program (e.g. "90%") */
+  placementRate?: string;
+  /** Placement timeframe shown with placementRate (e.g. "3–4 months") */
+  placementWindow?: string;
+  /** Typical salary hike range after the program (e.g. "80–150%") */
+  salaryHike?: string;
+  /** Example companies where learners have been placed */
+  placedCompanies?: string[];
+  /** Show placement-support steps on the detail page */
+  careerSupport?: boolean;
   /** Highlight as a flagship / recommended program on catalog cards */
   recommended?: boolean;
   tags: string[];
   curriculum: string[];
 };
+
+/** Logos for companies shown in course placement sections */
+export const placedCompanyLogos: Record<string, string> = {
+  Amazon: "/partners/placed/amazon.svg",
+  Accenture: "/partners/placed/accenture.svg",
+  Capgemini: "/partners/placed/capgemini.svg",
+  Cognizant: "/partners/placed/cognizant.svg",
+  TCS: "/partners/placed/tcs.svg",
+  Infosys: "/partners/placed/infosys.svg",
+  Deloitte: "/partners/placed/deloitte.svg",
+  Persistent: "/partners/placed/persistent.svg",
+  Wipro: "/partners/placed/wipro.svg",
+  HCLTech: "/partners/placed/hcltech.svg",
+  LTIMindtree: "/partners/placed/ltimindtree.svg"
+};
+
+/** Shared placement-support steps shown on career-focused course pages */
+export const careerSupportSteps = [
+  {
+    title: "CV optimization",
+    detail: "Rewrite your resume around impact, projects, and role-ready keywords recruiters scan for."
+  },
+  {
+    title: "Naukri & LinkedIn polish",
+    detail: "Optimize headlines, skills, and profile visibility so the right recruiters find you faster."
+  },
+  {
+    title: "Mock interviews",
+    detail: "Practice technical and behavioral rounds with mentor feedback until answers feel sharp."
+  },
+  {
+    title: "Coding test practice",
+    detail: "Timed drills and common screening patterns so online assessments feel familiar, not stressful."
+  },
+  {
+    title: "Job search strategy",
+    detail: "Target roles, refine applications, and stay consistent with a clear weekly outreach plan."
+  },
+  {
+    title: "Offer readiness",
+    detail: "Prep for final rounds and salary conversations so you can choose the right opportunity with confidence."
+  }
+] as const;
 
 export const trustPillars = [
   {
@@ -71,6 +126,7 @@ export const courseCatalog: CatalogCourse[] = [
     duration: "6 Weeks",
     level: "Beginner",
     levelColor: "#22c55e",
+    passRate: "100%",
     details: "Your entry point into cloud computing. Build foundational AWS knowledge and earn your first cloud certification.",
     overview:
       "This program gives you a structured path through AWS fundamentals—from global infrastructure to core services, security, billing, and support—so you can speak confidently about the cloud and sit for the AWS Certified Cloud Practitioner (CLF-C02) exam.",
@@ -108,6 +164,19 @@ export const courseCatalog: CatalogCourse[] = [
     level: "Intermediate",
     levelColor: "#f59e0b",
     recommended: true,
+    passRate: "94%",
+    salaryHike: "80–150%",
+    careerSupport: true,
+    placedCompanies: [
+      "Amazon",
+      "Accenture",
+      "Capgemini",
+      "Cognizant",
+      "TCS",
+      "Infosys",
+      "Deloitte",
+      "Persistent"
+    ],
     details: "Master building and deploying cloud-native applications using the full suite of AWS developer services.",
     overview:
       "Go deep on building and operating applications on AWS: serverless, APIs, data stores, messaging, auth, and CI/CD. You’ll ship realistic features in labs and prepare systematically for the AWS Certified Developer – Associate (DVA-C02) exam.",
@@ -145,6 +214,7 @@ export const courseCatalog: CatalogCourse[] = [
     duration: "10 Weeks",
     level: "Advanced",
     levelColor: "#ef4444",
+    passRate: "96%",
     details: "Design scalable, fault-tolerant cloud systems. One of the most valued and recognised certifications in the industry.",
     overview:
       "Focus on architecture: multi-tier systems, resilience, performance, security, and cost on AWS. You’ll practice designing solutions for real constraints and prepare for the AWS Certified Solutions Architect – Associate (SAA-C03) exam.",
@@ -251,6 +321,20 @@ export const courseCatalog: CatalogCourse[] = [
     level: "Intermediate",
     levelColor: "#f59e0b",
     recommended: true,
+    placementRate: "90%",
+    placementWindow: "3–4 months",
+    salaryHike: "60–100%",
+    careerSupport: true,
+    placedCompanies: [
+      "TCS",
+      "Infosys",
+      "Accenture",
+      "Cognizant",
+      "Capgemini",
+      "Wipro",
+      "HCLTech",
+      "LTIMindtree"
+    ],
     details:
       "Become a job-ready full stack engineer — Java 21, Spring Boot APIs, and React.js frontends, with real projects you can ship and show.",
     overview:

@@ -3,8 +3,32 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ConnectMentorModal from "@/components/ConnectMentorModal";
 import DownloadBrochureModal from "@/components/DownloadBrochureModal";
+import {
+  IconAudience,
+  IconCert,
+  IconCheck,
+  IconCurriculum,
+  IconFaq,
+  IconFeatures,
+  IconFormat,
+  IconHighlights,
+  IconNext,
+  IconOverview,
+  IconProjects,
+  IconReviews,
+  IconSkills,
+  IconStar,
+  SectionHeading,
+  highlightIconAt
+} from "@/components/CourseDetailIcons";
 import { CourseTagList } from "@/components/TagLists";
-import { courseCatalog, getCourseBySlug, instructors } from "@/app/homeContent";
+import {
+  careerSupportSteps,
+  courseCatalog,
+  getCourseBySlug,
+  instructors,
+  placedCompanyLogos
+} from "@/app/homeContent";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -746,7 +770,7 @@ export default async function ProgramDetailPage({ params }: Props) {
           "Readable test naming and Arrange-Act-Assert"
         ]
       },
-      
+
       {
         title: "React.js fundamentals",
         topics: [
@@ -836,7 +860,16 @@ export default async function ProgramDetailPage({ params }: Props) {
     "100% online learning",
     "Doubt Support"
   ];
-  const heroBannerStats = [course.duration, course.level, "Mentor-led", "24/7 support"];
+  const heroBannerStats = [
+    { label: "Duration", value: course.duration },
+    { label: "Level", value: course.level },
+    { label: "Format", value: "Live online" },
+    ...(course.passRate
+      ? [{ label: "Pass rate", value: course.passRate }]
+      : course.placementRate
+        ? [{ label: "Placed", value: course.placementRate }]
+        : [{ label: "Support", value: "Mentor-led" }])
+  ];
   const projectExamples = [
     `Guided ${course.badge} use-case implementation`,
     "Architecture and troubleshooting review with mentor",
@@ -900,28 +933,46 @@ export default async function ProgramDetailPage({ params }: Props) {
 
         <header className="course-detail-hero">
           <div className={`course-detail-hero-banner course-detail-hero-banner--${isAws ? "aws" : "spring"}`}>
-            <div className="course-detail-hero-banner-glow" />
+            <div className="course-detail-hero-banner-glow" aria-hidden="true" />
+            <div className="course-detail-hero-banner-grid" aria-hidden="true" />
             <div className="course-detail-hero-watermark" aria-hidden="true">
-              {course.badge}
+              {course.examCode}
             </div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={providerLogo} alt={providerLabel} className={`course-detail-provider-logo ${isAws ? "is-aws" : "is-spring"}`} />
+
+            <div className="course-detail-banner-top">
+              <div className="course-detail-provider-logo-wrap">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={providerLogo}
+                  alt={providerLabel}
+                  className={`course-detail-provider-logo ${isAws ? "is-aws" : "is-spring"}`}
+                />
+              </div>
+              <span className="course-detail-hero-badge">{course.badge}</span>
+            </div>
+
             <div className="course-detail-banner-text">
-              <p>{providerLabel}</p>
+              {!isAws ? <p className="course-detail-banner-provider">{providerLabel}</p> : null}
+              <p className="course-detail-banner-kicker">Exam track</p>
               <h3>{course.examCode}</h3>
-              <span className="course-detail-banner-subtitle">Industry-ready mentor-led cohort</span>
+              <span className="course-detail-banner-subtitle">
+                Industry-ready · mentor-led · weekend-friendly
+              </span>
             </div>
-            <div className="course-detail-banner-stats" aria-hidden="true">
+
+            <div className="course-detail-banner-stats">
               {heroBannerStats.map((item) => (
-                <span key={item}>{item}</span>
+                <div
+                  key={item.label}
+                  className={`course-detail-banner-stat${
+                    item.label === "Pass rate" || item.label === "Placed" ? " is-pass-rate" : ""
+                  }`}
+                >
+                  <span className="course-detail-banner-stat-label">{item.label}</span>
+                  <span className="course-detail-banner-stat-value">{item.value}</span>
+                </div>
               ))}
             </div>
-            <div className="course-detail-banner-chip-row" aria-hidden="true">
-              <span>Live</span>
-              <span>Weekend</span>
-              <span>Online</span>
-            </div>
-            <span className="course-detail-hero-badge">{course.badge}</span>
           </div>
           <div className="course-detail-hero-body">
             <p className="course-detail-eyebrow">
@@ -950,9 +1001,15 @@ export default async function ProgramDetailPage({ params }: Props) {
               <CourseTagList tags={course.tags} />
             </div>
             <div className="course-detail-highlight-row" aria-label="Key highlights">
-              {keyHighlights.map((item) => (
-                <span key={item} className="course-detail-highlight-pill">{item}</span>
-              ))}
+              {keyHighlights.map((item, index) => {
+                const HighlightIcon = highlightIconAt(index);
+                return (
+                  <span key={item} className="course-detail-highlight-pill">
+                    <HighlightIcon className="course-detail-highlight-pill-icon" />
+                    {item}
+                  </span>
+                );
+              })}
             </div>
             <div className="course-detail-hero-actions">
               <ConnectMentorModal className="button btn-primary" label="Talk to mentor" showIcon />
@@ -968,48 +1025,79 @@ export default async function ProgramDetailPage({ params }: Props) {
         <div className="course-detail-grid">
           <div className="course-detail-main">
             <section className="course-detail-section" aria-labelledby="overview-heading">
-              <h2 id="overview-heading" className="course-detail-h2">Overview</h2>
+              <SectionHeading id="overview-heading" icon={<IconOverview />}>
+                Overview
+              </SectionHeading>
               <p className="course-detail-prose">{course.overview}</p>
             </section>
 
             <div className="course-detail-duo">
               <section className="course-detail-section" aria-labelledby="top-features-heading">
-                <h2 id="top-features-heading" className="course-detail-h2">Top features</h2>
+                <SectionHeading id="top-features-heading" icon={<IconFeatures />}>
+                  Top features
+                </SectionHeading>
                 <ul className="course-detail-outcomes">
                   {course.outcomes.map((item) => (
-                    <li key={item}>{item}</li>
+                    <li key={item}>
+                      <span className="course-detail-outcome-icon" aria-hidden="true">
+                        <IconCheck />
+                      </span>
+                      <span>{item}</span>
+                    </li>
                   ))}
                 </ul>
               </section>
 
               <section className="course-detail-section" aria-labelledby="highlights-heading">
-                <h2 id="highlights-heading" className="course-detail-h2">Key highlights</h2>
+                <SectionHeading id="highlights-heading" icon={<IconHighlights />}>
+                  Key highlights
+                </SectionHeading>
                 <div className="course-detail-highlight-grid">
-                  {keyHighlights.map((item) => (
-                    <article key={item} className="course-detail-mini-card">{item}</article>
-                  ))}
+                  {keyHighlights.map((item, index) => {
+                    const HighlightIcon = highlightIconAt(index);
+                    return (
+                      <article key={item} className="course-detail-mini-card">
+                        <span className="course-detail-mini-card-icon" aria-hidden="true">
+                          <HighlightIcon />
+                        </span>
+                        <span>{item}</span>
+                      </article>
+                    );
+                  })}
                 </div>
               </section>
             </div>
 
             <section className="course-detail-section" aria-labelledby="skills-heading">
-              <h2 id="skills-heading" className="course-detail-h2">Skills under this course</h2>
+              <SectionHeading id="skills-heading" icon={<IconSkills />}>
+                Skills under this course
+              </SectionHeading>
               <div className="course-detail-skills">
                 {courseSkills.map((skill) => (
-                  <span key={skill} className="course-detail-skill-pill">{skill}</span>
+                  <span key={skill} className="course-detail-skill-pill">
+                    <span className="course-detail-skill-dot" aria-hidden="true" />
+                    {skill}
+                  </span>
                 ))}
               </div>
             </section>
 
             <section className="course-detail-section" aria-labelledby="curriculum-heading">
-              <h2 id="curriculum-heading" className="course-detail-h2">Course curriculum</h2>
+              <SectionHeading id="curriculum-heading" icon={<IconCurriculum />}>
+                Course curriculum
+              </SectionHeading>
               <p className="course-detail-prose course-detail-curriculum-intro">
                 Weekly structure may shift slightly by cohort; this is the core syllabus we cover end to end.
               </p>
               <div className="course-detail-modules" role="list">
-                {curriculumModules.map((m) => (
+                {curriculumModules.map((m, index) => (
                   <details key={m.title} className="course-detail-module" role="listitem">
-                    <summary>{m.title}</summary>
+                    <summary>
+                      <span className="course-detail-module-num" aria-hidden="true">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <span>{m.title}</span>
+                    </summary>
                     {m.topics.length ? (
                       <ul className="course-detail-module-topics">
                         {m.topics.map((t) => (
@@ -1023,22 +1111,48 @@ export default async function ProgramDetailPage({ params }: Props) {
             </section>
 
             <section className="course-detail-section" aria-labelledby="projects-heading">
-              <h2 id="projects-heading" className="course-detail-h2">Real world case studies &amp; projects</h2>
-              <ul className="course-detail-outcomes">
-                {projectExamples.map((item) => (
-                  <li key={item}>{item}</li>
+              <SectionHeading id="projects-heading" icon={<IconProjects />}>
+                Real world case studies &amp; projects
+              </SectionHeading>
+              <div className="course-detail-project-grid">
+                {projectExamples.map((item, index) => (
+                  <article key={item} className="course-detail-project-card">
+                    <span className="course-detail-project-num" aria-hidden="true">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <p>{item}</p>
+                  </article>
                 ))}
-              </ul>
+              </div>
             </section>
 
             <section className="course-detail-section" aria-labelledby="reviews-heading">
-              <h2 id="reviews-heading" className="course-detail-h2">Reviews</h2>
+              <SectionHeading id="reviews-heading" icon={<IconReviews />}>
+                Reviews
+              </SectionHeading>
               <div className="course-detail-reviews">
                 {reviews.map((review) => (
                   <article key={review.name} className="course-detail-review">
-                    <p className="course-detail-review-stars" aria-label="5 star rating">*****</p>
+                    <div className="course-detail-review-top">
+                      <span className="course-detail-review-avatar" aria-hidden="true">
+                        {review.name
+                          .split(" ")
+                          .map((part) => part[0])
+                          .slice(0, 2)
+                          .join("")}
+                      </span>
+                      <div>
+                        <p className="course-detail-review-stars" aria-label="5 star rating">
+                          {Array.from({ length: 5 }).map((_, i) => (
+                            <IconStar key={i} className="course-detail-review-star" />
+                          ))}
+                        </p>
+                        <p className="course-detail-review-meta">
+                          {review.name} · {review.role}
+                        </p>
+                      </div>
+                    </div>
                     <p className="course-detail-review-text">&ldquo;{review.text}&rdquo;</p>
-                    <p className="course-detail-review-meta">{review.name} · {review.role}</p>
                     <p className="course-detail-review-company">{review.company}</p>
                   </article>
                 ))}
@@ -1046,7 +1160,9 @@ export default async function ProgramDetailPage({ params }: Props) {
             </section>
 
             <section className="course-detail-section" aria-labelledby="faq-heading">
-              <h2 id="faq-heading" className="course-detail-h2">Course FAQs</h2>
+              <SectionHeading id="faq-heading" icon={<IconFaq />}>
+                Course FAQs
+              </SectionHeading>
               <div className="course-detail-faqs">
                 {faqs.map((faq) => (
                   <details key={faq.q} className="course-detail-faq">
@@ -1057,11 +1173,109 @@ export default async function ProgramDetailPage({ params }: Props) {
               </div>
             </section>
 
+            {course.careerSupport ? (
+              <section
+                className="course-detail-section course-detail-career-panel"
+                aria-labelledby="placement-heading"
+              >
+                <div className="course-detail-career-panel-glow" aria-hidden="true" />
+                <p className="course-detail-career-eyebrow">Outcomes that matter</p>
+                <h2 id="placement-heading" className="course-detail-h2 course-detail-career-title">
+                  Career outcomes &amp; placement support
+                </h2>
+
+                <div className="course-detail-outcome-stats">
+                  {course.placementRate ? (
+                    <article className="course-detail-stat-card course-detail-stat-card--green">
+                      <span className="course-detail-stat-card-icon" aria-hidden="true">✓</span>
+                      <div>
+                        <p className="course-detail-stat-card-value">{course.placementRate}</p>
+                        <p className="course-detail-stat-card-label">
+                          of our learners got a job within {course.placementWindow ?? "3–4 months"}
+                        </p>
+                      </div>
+                    </article>
+                  ) : null}
+                  {course.salaryHike ? (
+                    <article className="course-detail-stat-card course-detail-stat-card--green">
+                      <span className="course-detail-stat-card-icon" aria-hidden="true">↑</span>
+                      <div>
+                        <p className="course-detail-stat-card-value">{course.salaryHike}</p>
+                        <p className="course-detail-stat-card-label">
+                          typical salary hike after the program
+                        </p>
+                      </div>
+                    </article>
+                  ) : null}
+                </div>
+
+                {course.placedCompanies?.length ? (
+                  <div className="course-detail-placed-at">
+                    <p className="course-detail-placed-label">Where our learners are placed</p>
+                    <ul className="course-detail-company-grid">
+                      {course.placedCompanies.map((company) => {
+                        const logo = placedCompanyLogos[company];
+                        return (
+                          <li key={company} className="course-detail-company-tile">
+                            <span className="course-detail-company-logo-plate">
+                              {logo ? (
+                                // eslint-disable-next-line @next/next/no-img-element
+                                <img
+                                  src={`${logo}?v=3`}
+                                  alt={`${company} logo`}
+                                  className="course-detail-company-logo"
+                                />
+                              ) : (
+                                <span className="course-detail-company-fallback">{company}</span>
+                              )}
+                            </span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                ) : null}
+
+                <div className="course-detail-career-support">
+                  <div className="course-detail-career-support-head">
+                    <h3 className="course-detail-h3">How we help you get placed</h3>
+                    <p className="course-detail-prose course-detail-career-intro">
+                      Beyond training, we guide you through the full job-search loop—so skills turn into interviews and offers.
+                    </p>
+                  </div>
+                  <ol className="course-detail-support-steps">
+                    {careerSupportSteps.map((step, index) => (
+                      <li key={step.title} className="course-detail-support-step">
+                        <span className="course-detail-support-step-num" aria-hidden="true">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <div>
+                          <p className="course-detail-support-step-title">{step.title}</p>
+                          <p className="course-detail-support-step-detail">{step.detail}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </section>
+            ) : null}
+
             {course.certification ? (
               <section className="course-detail-section" aria-labelledby="cert-heading">
-                <h2 id="cert-heading" className="course-detail-h2">Certification</h2>
+                <SectionHeading id="cert-heading" icon={<IconCert />}>
+                  Certification
+                </SectionHeading>
                 <p className="course-detail-cert-highlight">
-                  100% of our learners cleared certification.
+                  {course.passRate ? (
+                    <>
+                      <span className="course-cert-outcome-icon" aria-hidden="true">✓</span>
+                      <span>
+                        <strong>{course.passRate}</strong> of our learners cleared AWS certification.
+                      </span>
+                    </>
+                  ) : (
+                    "Strong certification outcomes with guided exam prep."
+                  )}
                 </p>
                 <p className="course-detail-prose">{course.certification}</p>
               </section>
@@ -1070,15 +1284,24 @@ export default async function ProgramDetailPage({ params }: Props) {
 
           <aside className="course-detail-sidebar">
             <div className="course-detail-card">
-              <h3 className="course-detail-card-title">Format</h3>
+              <h3 className="course-detail-card-title">
+                <IconFormat className="course-detail-card-title-icon" />
+                Format
+              </h3>
               <p className="course-detail-card-text">{course.format}</p>
             </div>
             <div className="course-detail-card">
-              <h3 className="course-detail-card-title">Who it&apos;s for</h3>
+              <h3 className="course-detail-card-title">
+                <IconAudience className="course-detail-card-title-icon" />
+                Who it&apos;s for
+              </h3>
               <p className="course-detail-card-text">{course.audience}</p>
             </div>
             <div className="course-detail-card course-detail-mentor-card-wrap">
-              <h3 className="course-detail-card-title">Your mentor</h3>
+              <h3 className="course-detail-card-title">
+                <IconAudience className="course-detail-card-title-icon" />
+                Your Trainer
+              </h3>
               <div className="course-detail-mentor-card">
                 <a
                   href={leadMentor.linkedin}
@@ -1103,7 +1326,10 @@ export default async function ProgramDetailPage({ params }: Props) {
               </div>
             </div>
             <div className="course-detail-card course-detail-card-cta">
-              <h3 className="course-detail-card-title">Next step</h3>
+              <h3 className="course-detail-card-title">
+                <IconNext className="course-detail-card-title-icon" />
+                Next step
+              </h3>
               <p className="course-detail-card-text">
                 Not sure this track fits? Book a free session—we&apos;ll map your background to the right program.
               </p>

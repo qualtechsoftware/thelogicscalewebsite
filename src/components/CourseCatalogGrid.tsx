@@ -40,6 +40,23 @@ export default function CourseCatalogGrid() {
             </div>
             <h3>{course.title}</h3>
             <p className="course-desc">{course.details}</p>
+            {course.passRate ? (
+              <p className="course-cert-outcome">
+                <span className="course-cert-outcome-icon" aria-hidden="true">✓</span>
+                <span>
+                  <strong>{course.passRate}</strong> of our learners cleared AWS certification
+                </span>
+              </p>
+            ) : null}
+            {course.placementRate ? (
+              <p className="course-cert-outcome">
+                <span className="course-cert-outcome-icon" aria-hidden="true">✓</span>
+                <span>
+                  <strong>{course.placementRate}</strong> of our learners got a job within{" "}
+                  {course.placementWindow ?? "3–4 months"}
+                </span>
+              </p>
+            ) : null}
             <div className="course-tags">
               <CourseTagList tags={course.tags} />
             </div>
