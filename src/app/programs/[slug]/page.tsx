@@ -746,6 +746,7 @@ export default async function ProgramDetailPage({ params }: Props) {
           "Schema migration concepts (Flyway/Liquibase)"
         ]
       },
+      
       {
         title: "Spring Security & JWT",
         topics: [
