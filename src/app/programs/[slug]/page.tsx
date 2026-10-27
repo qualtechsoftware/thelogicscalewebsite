@@ -1097,7 +1097,8 @@ export default async function ProgramDetailPage({ params }: Props) {
                       <span className="course-detail-module-num" aria-hidden="true">
                         {String(index + 1).padStart(2, "0")}
                       </span>
-                      <span>{m.title}</span>
+                      <span className="course-detail-module-title">{m.title}</span>
+                      <span className="course-detail-module-toggle" aria-hidden="true" />
                     </summary>
                     {m.topics.length ? (
                       <ul className="course-detail-module-topics">

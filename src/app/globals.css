@@ -2818,6 +2818,36 @@ h2 {
   display: none;
 }
 
+.course-detail-module-title {
+  flex: 1;
+  min-width: 0;
+}
+
+.course-detail-module-toggle {
+  flex-shrink: 0;
+  width: 1.55rem;
+  height: 1.55rem;
+  margin-left: auto;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #0284c7;
+  background: #e8f6fd;
+  border: 1px solid #c5e4f5;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.course-detail-module-toggle::before {
+  content: "+";
+}
+
+.course-detail-module[open] .course-detail-module-toggle::before {
+  content: "\2212";
+}
+
 .course-detail-module-num {
   flex-shrink: 0;
   width: 2rem;
