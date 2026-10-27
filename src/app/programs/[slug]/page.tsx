@@ -26,7 +26,6 @@ import {
   careerSupportSteps,
   courseCatalog,
   getCourseBySlug,
-  instructors,
   placedCompanyLogos
 } from "@/app/homeContent";
 
@@ -57,7 +56,6 @@ export default async function ProgramDetailPage({ params }: Props) {
   const { slug } = await params;
   const course = getCourseBySlug(slug);
   if (!course) notFound();
-  const leadMentor = instructors[0];
   const isAws = course.badge.toLowerCase().includes("aws");
   const providerLabel = isAws ? "Amazon Web Services" : "Spring Framework";
   const providerLogo = isAws
@@ -1298,34 +1296,6 @@ export default async function ProgramDetailPage({ params }: Props) {
                 Who it&apos;s for
               </h3>
               <p className="course-detail-card-text">{course.audience}</p>
-            </div>
-            <div className="course-detail-card course-detail-mentor-card-wrap">
-              <h3 className="course-detail-card-title">
-                <IconAudience className="course-detail-card-title-icon" />
-                Your Trainer
-              </h3>
-              <div className="course-detail-mentor-card">
-                <a
-                  href={leadMentor.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="course-detail-mentor-linkedin-icon"
-                  aria-label={`${leadMentor.name} LinkedIn profile`}
-                >
-                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                  </svg>
-                </a>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={leadMentor.photo} alt={leadMentor.name} className="course-detail-mentor-photo" />
-                <div className="course-detail-mentor-meta">
-                  <p className="course-detail-mentor-name">{leadMentor.name}</p>
-                  <p className="course-detail-card-text course-detail-mentor-role">
-                    <span className="course-detail-mentor-role-pill">{leadMentor.role}</span>
-                    <span className="course-detail-mentor-role-company">{leadMentor.company}</span>
-                  </p>
-                </div>
-              </div>
             </div>
             <div className="course-detail-card course-detail-card-cta">
               <h3 className="course-detail-card-title">

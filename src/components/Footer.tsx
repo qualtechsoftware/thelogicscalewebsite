@@ -18,7 +18,6 @@ export default function Footer() {
             <p className="site-footer-heading">Learn</p>
             <ul>
               <li><a href="/courses">Programs</a></li>
-              <li><a href="/#mentors">Trainers</a></li>
               <li><a href="/#hiring-partners">Hiring Partners</a></li>
               <li><a href="/about">About us</a></li>
             </ul>

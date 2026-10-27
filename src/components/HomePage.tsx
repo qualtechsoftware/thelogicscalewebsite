@@ -3,10 +3,8 @@ import Link from "next/link";
 import ConnectMentorModal from "@/components/ConnectMentorModal";
 import HeroConsultationForm from "@/components/HeroConsultationForm";
 import TypewriterText from "@/components/TypewriterText";
-import FallbackImg from "@/components/FallbackImg";
 import CourseCatalogGrid from "@/components/CourseCatalogGrid";
-import { InstructorTagList } from "@/components/TagLists";
-import { hiringPartners, instructors, trustPillars } from "@/app/homeContent";
+import { hiringPartners, trustPillars } from "@/app/homeContent";
 
 
 export default function HomePage() {
@@ -90,51 +88,6 @@ export default function HomePage() {
             <p className="section-intro">High-demand programs built for real engineering roles — not just certifications.</p>
           </div>
           <CourseCatalogGrid />
-        </div>
-      </section>
-
-      <section id="mentors" className="section-wrapper mentors-section">
-        <div className="container">
-          <div className="mentors-header">
-            <div className="section-header">
-              <p className="section-tag mentors-tag">Our Trainers</p>
-              <h2>Learn from Engineers Who Build at Scale</h2>
-              <p className="section-intro">Our trainers are active software professionals — not just teachers. They bring real delivery experience into every session.</p>
-            </div>
-          </div>
-          <div className="instructors-grid">
-            {instructors.map((ins) => (
-              <article key={ins.name} className="instructor-card">
-                <div className="instructor-card-banner">
-                  <FallbackImg src={ins.photo} alt={ins.name} className="instructor-photo" />
-                </div>
-                <div className="instructor-info">
-                  <div className="instructor-name-row">
-                    <div>
-                      <p className="instructor-name">{ins.name}</p>
-                      <p className="instructor-role">{ins.role}</p>
-                    </div>
-                    <a href={ins.linkedin} target="_blank" rel="noopener noreferrer" className="linkedin-btn" aria-label="LinkedIn">
-                      <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                      </svg>
-                    </a>
-                  </div>
-                  <p className="instructor-company">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="12" height="12"><path d="M3 21h18M3 7v14M21 7v14M6 11h3m-3 4h3m6-4h3m-3 4h3M9 21V7l6-4v18"/></svg>
-                    {ins.company}
-                  </p>
-                  {"certification" in ins ? (
-                    <p className="instructor-certification">{String(ins.certification)}</p>
-                  ) : null}
-                  <p className="instructor-bio">{ins.bio}</p>
-                  <div className="instructor-tags">
-                    <InstructorTagList tags={ins.tags} />
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
         </div>
       </section>
 
