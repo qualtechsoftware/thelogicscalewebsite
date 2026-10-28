@@ -3,7 +3,7 @@
 import { useState, type CSSProperties, type ReactNode } from "react";
 import Link from "next/link";
 import CourseCardBanner from "@/components/CourseCardBanner";
-import { CourseTagList } from "@/components/TagLists";
+import { TAG_ICONS } from "@/components/TagLists";
 import { courseCatalog, type CatalogCourse } from "@/app/homeContent";
 
 type CatalogTabId = "all" | "popular" | "cloud" | "genai" | "software";
@@ -74,6 +74,35 @@ function courseMatchesTab(course: CatalogCourse, tab: CatalogTabId) {
   return slug.includes("java") || slug.includes("full-stack") || slug.includes("spring-boot");
 }
 
+function CategoryIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width={14} height={14} fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      <path d="M4 19V5M4 19h16" strokeLinecap="round" />
+      <path d="M8 16v-5M12 16V8M16 16v-3" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function coursePills(course: CatalogCourse) {
+  const toolIcons = course.tags.map((tag) => TAG_ICONS[tag]).filter(Boolean).slice(0, 3);
+  const toolsLabel =
+    course.category === "Generative AI"
+      ? `${Math.max(course.tags.length, 3)}+ AI Tools`
+      : course.category === "Cloud Computing"
+        ? "AWS Tools"
+        : "Dev Tools";
+
+  const featurePills: string[] = [];
+  if (course.careerSupport) featurePills.push("Job bootcamp");
+  if (course.passRate || course.certification) featurePills.push("Certification");
+  if (course.placementRate && !featurePills.includes("Job bootcamp")) featurePills.push("Placement support");
+  if (featurePills.length === 0) {
+    featurePills.push(...course.tags.slice(0, 2));
+  }
+
+  return { toolIcons, toolsLabel, featurePills: featurePills.slice(0, 2) };
+}
+
 type CourseCatalogGridProps = {
   showFilters?: boolean;
 };
@@ -109,66 +138,73 @@ export default function CourseCatalogGrid({ showFilters = false }: CourseCatalog
       ) : null}
 
       <div className="catalog-grid" role={showFilters ? "tabpanel" : undefined}>
-        {courses.map((course) => (
-          <Link
-            key={course.slug}
-            href={`/programs/${course.slug}`}
-            className={`course-card course-card--link${course.recommended ? " course-card--recommended" : ""}`}
-            style={
-              {
-                "--course-accent": course.color,
-                "--level-color": course.levelColor
-              } as CSSProperties
-            }
-          >
-            <div className="course-card-img-wrap">
-              <CourseCardBanner course={course} />
-              {course.recommended ? <span className="course-card-recommended">Recommended</span> : null}
-              <span className="course-card-badge">{course.badge}</span>
-            </div>
-            <div className="course-card-body">
-              <div className="course-meta-top">
-                <span className="duration-badge">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width={12} height={12} aria-hidden="true">
-                    <circle cx="12" cy="12" r="10" />
-                    <polyline points="12 6 12 12 16 14" />
-                  </svg>
-                  {course.duration}
+        {courses.map((course) => {
+          const { toolIcons, toolsLabel, featurePills } = coursePills(course);
+          return (
+            <Link
+              key={course.slug}
+              href={`/programs/${course.slug}`}
+              className={`course-card course-card--link${course.recommended ? " course-card--recommended" : ""}`}
+              style={{ "--course-accent": course.color } as CSSProperties}
+            >
+              <div className="course-card-media">
+                <div className="course-card-img-wrap">
+                  <CourseCardBanner course={course} />
+                </div>
+                <span className="course-card-category">
+                  <CategoryIcon />
+                  {course.category}
                 </span>
-                <span className="level-badge">{course.level}</span>
-                {course.recommended ? <span className="course-featured-pill">Most chosen</span> : null}
+                {course.recommended ? (
+                  <span className="course-card-recommended">Recommended</span>
+                ) : null}
               </div>
-              <h3>{course.title}</h3>
-              <p className="course-desc">{course.details}</p>
-              {course.passRate ? (
-                <p className="course-cert-outcome">
-                  <span className="course-cert-outcome-icon" aria-hidden="true">✓</span>
-                  <span>
-                    <strong>{course.passRate}</strong> of our learners cleared AWS certification
+
+              <div className="course-card-body">
+                <div className="course-card-provider">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={course.providerLogo}
+                    alt=""
+                    className="course-card-provider-logo"
+                    width={28}
+                    height={28}
+                  />
+                  <span className="course-card-provider-name">{course.provider}</span>
+                </div>
+
+                <h3>{course.title}</h3>
+
+                <p className="course-card-stats">
+                  <span>{course.duration}</span>
+                  <span className="course-card-stats-sep" aria-hidden="true">
+                    |
                   </span>
+                  <span>{course.enrolled} Enrolled</span>
                 </p>
-              ) : null}
-              {course.placementRate ? (
-                <p className="course-cert-outcome">
-                  <span className="course-cert-outcome-icon" aria-hidden="true">✓</span>
-                  <span>
-                    <strong>{course.placementRate}</strong> of our learners got a job within{" "}
-                    {course.placementWindow ?? "3–4 months"}
+
+                <div className="course-card-pills">
+                  <span className="course-pill course-pill--tools">
+                    {toolIcons.length > 0 ? (
+                      <span className="course-pill-logos" aria-hidden="true">
+                        {toolIcons.map((src) => (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img key={src} src={src} alt="" width={16} height={16} />
+                        ))}
+                      </span>
+                    ) : null}
+                    {toolsLabel}
                   </span>
-                </p>
-              ) : null}
-              <div className="course-tags">
-                <CourseTagList tags={course.tags} />
+                  {featurePills.map((pill) => (
+                    <span key={pill} className="course-pill">
+                      {pill}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <span className="learn-more">
-                View syllabus
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" width={15} height={15} aria-hidden="true">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </span>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

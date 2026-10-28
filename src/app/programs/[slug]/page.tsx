@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -57,10 +58,8 @@ export default async function ProgramDetailPage({ params }: Props) {
   const course = getCourseBySlug(slug);
   if (!course) notFound();
   const isAws = course.badge.toLowerCase().includes("aws");
-  const providerLabel = isAws ? "Amazon Web Services" : "Spring Framework";
-  const providerLogo = isAws
-    ? "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg"
-    : "https://upload.wikimedia.org/wikipedia/commons/4/44/Spring_Framework_Logo_2018.svg";
+  const providerLabel = course.provider;
+  const providerLogo = course.providerLogo;
 
   const skillsBySlug: Record<string, string[]> = {
     "aws-cloud-practitioner": [
@@ -920,7 +919,15 @@ export default async function ProgramDetailPage({ params }: Props) {
   ];
 
   return (
-    <main className="course-detail-page">
+    <main
+      className="course-detail-page"
+      style={
+        {
+          "--course-accent": course.color,
+          "--level-color": course.levelColor
+        } as CSSProperties
+      }
+    >
       <div className="container course-detail-container">
         <nav className="course-detail-breadcrumb" aria-label="Breadcrumb">
           <Link href="/">Home</Link>
@@ -931,46 +938,79 @@ export default async function ProgramDetailPage({ params }: Props) {
         </nav>
 
         <header className="course-detail-hero">
-          <div className={`course-detail-hero-banner course-detail-hero-banner--${isAws ? "aws" : "spring"}`}>
-            <div className="course-detail-hero-banner-glow" aria-hidden="true" />
-            <div className="course-detail-hero-banner-grid" aria-hidden="true" />
-            <div className="course-detail-hero-watermark" aria-hidden="true">
-              {course.examCode}
-            </div>
+          <div
+            className={`course-detail-hero-banner${
+              course.image ? " course-detail-hero-banner--photo" : ` course-detail-hero-banner--${isAws ? "aws" : "spring"}`
+            }`}
+          >
+            <div className="course-detail-hero-visual">
+              {course.image ? (
+                <>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={course.image}
+                    alt=""
+                    className="course-detail-hero-photo"
+                  />
+                  <div className="course-detail-hero-scrim" aria-hidden="true" />
+                </>
+              ) : (
+                <>
+                  <div className="course-detail-hero-banner-glow" aria-hidden="true" />
+                  <div className="course-detail-hero-banner-grid" aria-hidden="true" />
+                </>
+              )}
 
-            <div className="course-detail-banner-top">
-              <div className="course-detail-provider-logo-wrap">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={providerLogo}
-                  alt={providerLabel}
-                  className={`course-detail-provider-logo ${isAws ? "is-aws" : "is-spring"}`}
-                />
-              </div>
-              <span className="course-detail-hero-badge">{course.badge}</span>
-            </div>
-
-            <div className="course-detail-banner-text">
-              {!isAws ? <p className="course-detail-banner-provider">{providerLabel}</p> : null}
-              <p className="course-detail-banner-kicker">Exam track</p>
-              <h3>{course.examCode}</h3>
-              <span className="course-detail-banner-subtitle">
-                Industry-ready · mentor-led · weekend-friendly
-              </span>
-            </div>
-
-            <div className="course-detail-banner-stats">
-              {heroBannerStats.map((item) => (
-                <div
-                  key={item.label}
-                  className={`course-detail-banner-stat${
-                    item.label === "Pass rate" || item.label === "Placed" ? " is-pass-rate" : ""
-                  }`}
-                >
-                  <span className="course-detail-banner-stat-label">{item.label}</span>
-                  <span className="course-detail-banner-stat-value">{item.value}</span>
+              <div className="course-detail-banner-top">
+                <span className="course-detail-hero-category">
+                  <svg viewBox="0 0 24 24" width={14} height={14} fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <path d="M4 19V5M4 19h16" strokeLinecap="round" />
+                    <path d="M8 16v-5M12 16V8M16 16v-3" strokeLinecap="round" />
+                  </svg>
+                  {course.category}
+                </span>
+                <div className="course-detail-banner-top-right">
+                  {course.recommended ? (
+                    <span className="course-detail-hero-recommended">Recommended</span>
+                  ) : null}
+                  <span className="course-detail-hero-badge">{course.badge}</span>
                 </div>
-              ))}
+              </div>
+
+            </div>
+
+            <div className="course-detail-banner-footer">
+              <div className="course-detail-banner-text">
+                <div className="course-detail-banner-provider-row">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={providerLogo}
+                    alt=""
+                    className="course-detail-banner-provider-mark"
+                    width={28}
+                    height={28}
+                  />
+                  <p className="course-detail-banner-provider">{providerLabel}</p>
+                </div>
+                <h3>{course.examCode}</h3>
+                <span className="course-detail-banner-subtitle">
+                  {course.enrolled} enrolled · mentor-led · weekend-friendly
+                </span>
+              </div>
+
+              <div className="course-detail-banner-stats">
+                {heroBannerStats.map((item) => (
+                  <div
+                    key={item.label}
+                    className={`course-detail-banner-stat${
+                      item.label === "Pass rate" || item.label === "Placed" ? " is-pass-rate" : ""
+                    }`}
+                  >
+                    <span className="course-detail-banner-stat-label">{item.label}</span>
+                    <span className="course-detail-banner-stat-value">{item.value}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
           <div className="course-detail-hero-body">
@@ -1020,6 +1060,29 @@ export default async function ProgramDetailPage({ params }: Props) {
             </div>
           </div>
         </header>
+
+        <div className="course-detail-trustbar" aria-label="Program snapshot">
+          <div className="course-detail-trustbar-item">
+            <span className="course-detail-trustbar-label">Duration</span>
+            <span className="course-detail-trustbar-value">{course.duration}</span>
+          </div>
+          <div className="course-detail-trustbar-item">
+            <span className="course-detail-trustbar-label">Level</span>
+            <span className="course-detail-trustbar-value">{course.level}</span>
+          </div>
+          <div className="course-detail-trustbar-item">
+            <span className="course-detail-trustbar-label">Enrolled</span>
+            <span className="course-detail-trustbar-value">{course.enrolled}</span>
+          </div>
+          <div className="course-detail-trustbar-item">
+            <span className="course-detail-trustbar-label">
+              {course.passRate ? "Pass rate" : course.placementRate ? "Placed" : "Format"}
+            </span>
+            <span className="course-detail-trustbar-value">
+              {course.passRate ?? course.placementRate ?? "Live online"}
+            </span>
+          </div>
+        </div>
 
         <div className="course-detail-grid">
           <div className="course-detail-main">
@@ -1283,6 +1346,36 @@ export default async function ProgramDetailPage({ params }: Props) {
           </div>
 
           <aside className="course-detail-sidebar">
+            <div className="course-detail-card course-detail-card-cta">
+              {course.image ? (
+                <div className="course-detail-cta-media">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={course.image} alt="" className="course-detail-cta-photo" />
+                  <div className="course-detail-cta-media-scrim" aria-hidden="true" />
+                  <span className="course-detail-cta-media-badge">{course.badge}</span>
+                </div>
+              ) : null}
+              <div className="course-detail-cta-body">
+                <h3 className="course-detail-card-title">
+                  <IconNext className="course-detail-card-title-icon" />
+                  Next step
+                </h3>
+                <p className="course-detail-card-text">
+                  Not sure this track fits? Book a free session—we&apos;ll map your background to the right program.
+                </p>
+                <p className="course-detail-cta-meta">
+                  <span>{course.duration}</span>
+                  <span aria-hidden="true">·</span>
+                  <span>{course.enrolled} enrolled</span>
+                </p>
+                <ConnectMentorModal className="button btn-primary course-detail-sidebar-btn" label="Talk to mentor" showIcon />
+                <DownloadBrochureModal
+                  className="button btn-outline course-detail-sidebar-btn course-detail-sidebar-download"
+                  courseTitle={course.title}
+                  showIcon
+                />
+              </div>
+            </div>
             <div className="course-detail-card">
               <h3 className="course-detail-card-title">
                 <IconFormat className="course-detail-card-title-icon" />
@@ -1296,21 +1389,6 @@ export default async function ProgramDetailPage({ params }: Props) {
                 Who it&apos;s for
               </h3>
               <p className="course-detail-card-text">{course.audience}</p>
-            </div>
-            <div className="course-detail-card course-detail-card-cta">
-              <h3 className="course-detail-card-title">
-                <IconNext className="course-detail-card-title-icon" />
-                Next step
-              </h3>
-              <p className="course-detail-card-text">
-                Not sure this track fits? Book a free session—we&apos;ll map your background to the right program.
-              </p>
-              <ConnectMentorModal className="button btn-primary course-detail-sidebar-btn" label="Talk to mentor" showIcon />
-              <DownloadBrochureModal
-                className="button btn-outline course-detail-sidebar-btn course-detail-download-btn"
-                courseTitle={course.title}
-                showIcon
-              />
             </div>
           </aside>
         </div>

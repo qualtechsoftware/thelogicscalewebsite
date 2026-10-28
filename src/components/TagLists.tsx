@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import type { CatalogCourse } from "@/app/homeContent";
 
-const TAG_ICONS: Record<string, string> = {
+export const TAG_ICONS: Record<string, string> = {
   "Hands-on Labs": "/icons/tag-cloud-labs.png",
   "Real Projects": "/icons/tag-cloud-projects.png",
   "Certification Track": "/icons/tag-cloud-cert.png",

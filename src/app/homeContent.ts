@@ -4,6 +4,13 @@ export type CatalogCourse = {
   image: string | null;
   examCode: string;
   badge: string;
+  /** Overlay category chip on catalog media (e.g. Cloud Computing) */
+  category: string;
+  /** Partner / provider line under the media */
+  provider: string;
+  providerLogo: string;
+  /** Social proof shown as “12k+ Enrolled” */
+  enrolled: string;
   title: string;
   duration: string;
   level: string;
@@ -132,9 +139,13 @@ export const courseCatalog: CatalogCourse[] = [
   {
     slug: "aws-cloud-practitioner",
     color: "#f59e0b",
-    image: null,
+    image: "/courses/course-aws-developer.jpg",
     examCode: "CLF-C02",
     badge: "AWS",
+    category: "Cloud Computing",
+    provider: "Amazon Web Services",
+    providerLogo: "/partners/placed/amazon.svg",
+    enrolled: "500",
     title: "AWS Cloud Practitioner",
     duration: "6 Weeks",
     level: "Beginner",
@@ -169,9 +180,13 @@ export const courseCatalog: CatalogCourse[] = [
   {
     slug: "aws-certified-developer-associate",
     color: "#0ea5e9",
-    image: null,
+    image: "/courses/course-aws-developer.jpg",
     examCode: "DVA-C02",
     badge: "AWS Dev",
+    category: "Cloud Computing",
+    provider: "Amazon Web Services",
+    providerLogo: "/partners/placed/amazon.svg",
+    enrolled: "1k",
     title: "AWS Certified Developer Associate",
     duration: "10 Weeks",
     level: "Intermediate",
@@ -220,9 +235,13 @@ export const courseCatalog: CatalogCourse[] = [
   {
     slug: "aws-certified-solutions-architect",
     color: "#22c55e",
-    image: null,
+    image: "/courses/course-aws-developer.jpg",
     examCode: "SAA-C03",
     badge: "AWS SA",
+    category: "Cloud Computing",
+    provider: "Amazon Web Services",
+    providerLogo: "/partners/placed/amazon.svg",
+    enrolled: "600",
     title: "AWS Certified Solutions Architect",
     duration: "10 Weeks",
     level: "Advanced",
@@ -258,9 +277,13 @@ export const courseCatalog: CatalogCourse[] = [
   {
     slug: "spring-ai",
     color: "#a855f7",
-    image: null,
+    image: "/courses/course-spring-ai.jpg",
     examCode: "Spring AI",
     badge: "Spring AI",
+    category: "Generative AI",
+    provider: "The Logic Scale",
+    providerLogo: "/thelogicscale-logo.png",
+    enrolled: "450",
     title: "Spring AI",
     duration: "8 Weeks",
     level: "Intermediate",
@@ -292,9 +315,13 @@ export const courseCatalog: CatalogCourse[] = [
   {
     slug: "spring-boot-spring-ai",
     color: "#ef4444",
-    image: null,
+    image: "/courses/course-spring-boot-ai.jpg",
     examCode: "Full Program",
     badge: "Full Program",
+    category: "Generative AI",
+    provider: "The Logic Scale",
+    providerLogo: "/thelogicscale-logo.png",
+    enrolled: "350",
     title: "Spring Boot + Spring AI",
     duration: "14 Weeks",
     level: "Advanced",
@@ -326,9 +353,13 @@ export const courseCatalog: CatalogCourse[] = [
   {
     slug: "java-full-stack-developer",
     color: "#2563eb",
-    image: null,
+    image: "/courses/course-java-fullstack.jpg",
     examCode: "Java 21",
     badge: "Full Stack",
+    category: "Software Development",
+    provider: "The Logic Scale",
+    providerLogo: "/thelogicscale-logo.png",
+    enrolled: "800",
     title: "Java Full Stack Developer",
     duration: "16 Weeks",
     level: "Intermediate",
