@@ -12,14 +12,10 @@ export default function CoursesPage() {
     <main>
       <section className="section-wrapper dark-section courses-catalog-section">
         <div className="container">
-          <div className="section-header">
-            <p className="section-tag">Programs</p>
-            <h1 className="courses-page-title">All courses</h1>
-            <p className="section-intro">
-              AWS, Spring, and AI tracks—each card opens the full program page with syllabus, curriculum, and how to enroll.
-            </p>
+          <div className="programs-explorer-head">
+            <h1 className="section-title courses-page-title">Explore all our courses</h1>
           </div>
-          <CourseCatalogGrid />
+          <CourseCatalogGrid showFilters />
         </div>
       </section>
     </main>

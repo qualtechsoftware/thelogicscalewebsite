@@ -1,4 +1,5 @@
 import { AwsCertMenuIcon, SpringAiMenuIcon, SpringStackMenuIcon } from "@/components/NavCourseMenuIcons";
+import ConnectMentorModal from "@/components/ConnectMentorModal";
 
 const awsCourses = [
   { href: "/programs/aws-cloud-practitioner", label: "AWS Cloud Practitioner" },
@@ -16,6 +17,31 @@ const springCourses = [
 export default function SiteHeader() {
   return (
     <header className="topbar">
+      <div className="announce-banner" role="region" aria-label="AWS batch announcement">
+        <div className="announce-banner-track" aria-hidden="true" />
+        <div className="container announce-banner-inner">
+          <span className="announce-banner-batch">
+            <span className="announce-banner-batch-mark" aria-hidden="true">
+              AWS
+            </span>
+            Batch live
+          </span>
+          <p className="announce-banner-text">
+            <strong>AWS Batch is live</strong>
+            <span className="announce-banner-sep" aria-hidden="true">
+              —
+            </span>
+            Limited seats left in this cohort. Secure your spot today!
+          </p>
+          <ConnectMentorModal
+            className="announce-banner-cta"
+            label="Enroll now →"
+            eyebrow="AWS batch enrollment"
+            title="Enroll in the live AWS batch"
+            subject="The Logic Scale — AWS Batch enrollment"
+          />
+        </div>
+      </div>
       <div className="container">
         <nav className="navbar">
           <div className="nav-left">

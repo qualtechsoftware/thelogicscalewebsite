@@ -9,6 +9,9 @@ type Props = {
   className?: string;
   label?: string;
   showIcon?: boolean;
+  title?: string;
+  eyebrow?: string;
+  subject?: string;
 };
 
 type SubmitStatus = "idle" | "sending" | "success" | "error";
@@ -34,7 +37,10 @@ function CancelIcon() {
 export default function ConnectMentorModal({
   className = "button btn-primary",
   label = "Connect with a mentor",
-  showIcon = false
+  showIcon = false,
+  title = "Connect with a mentor",
+  eyebrow = "Free mentorship session",
+  subject = "The Logic Scale — Connect with a mentor"
 }: Props) {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -95,7 +101,7 @@ export default function ConnectMentorModal({
         name,
         email,
         phone,
-        subject: "The Logic Scale — Connect with a mentor"
+        subject
       });
       setStatus(ok ? "success" : "error");
     } catch {
@@ -131,9 +137,9 @@ export default function ConnectMentorModal({
                 </svg>
               </div>
               <div className="mentor-modal-title-block">
-                <p className="mentor-modal-eyebrow">Free mentorship session</p>
+                <p className="mentor-modal-eyebrow">{eyebrow}</p>
                 <h2 id={titleId} className="mentor-modal-title">
-                  Connect with a mentor
+                  {title}
                 </h2>
               </div>
             </div>
@@ -176,7 +182,9 @@ export default function ConnectMentorModal({
               />
             </div>
             <div className="mentor-modal-field">
-              <label htmlFor="mentor-modal-email">Email</label>
+              <label htmlFor="mentor-modal-email">
+                Email <span className="mentor-modal-req" aria-hidden="true">*</span>
+              </label>
               <input
                 id="mentor-modal-email"
                 type="email"

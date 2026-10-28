@@ -4,6 +4,8 @@ import ConnectMentorModal from "@/components/ConnectMentorModal";
 import HeroConsultationForm from "@/components/HeroConsultationForm";
 import TypewriterText from "@/components/TypewriterText";
 import CourseCatalogGrid from "@/components/CourseCatalogGrid";
+import HeroTrustMarquee from "@/components/HeroTrustMarquee";
+import LiveCoursesSection from "@/components/LiveCoursesSection";
 import { hiringPartners, trustPillars } from "@/app/homeContent";
 
 
@@ -30,7 +32,7 @@ export default function HomePage() {
               </p>
               <div className="actions">
                 <a className="button btn-primary" href="#programs">Explore Programs →</a>
-                <a className="button btn-outline" href="/#why-us">Why Choose Us</a>
+                <a className="button btn-outline" href="#why-us">Why Choose Us</a>
               </div>
               <div className="hero-stats">
                 <div className="stat"><span className="stat-num">1000+</span><span className="stat-label">Learners Trained</span></div>
@@ -52,11 +54,19 @@ export default function HomePage() {
         </div>
       </header>
 
+      <section id="programs" className="section-wrapper dark-section programs-explorer-section">
+        <div className="container">
+          <div className="programs-explorer-head">
+            <h2 className="section-title">Explore all our courses</h2>
+          </div>
+          <CourseCatalogGrid showFilters />
+        </div>
+      </section>
+
       <section id="why-us" className="section-wrapper why-us-section">
         <div className="container">
           <div className="section-header">
-            <p className="section-tag">Why Choose Us</p>
-            <h2>Not Just Another Training Program</h2>
+            <h2 className="section-title">Not Just Another Training Program</h2>
             <p className="section-intro">We are built differently — with real mentors, real projects, and a relentless focus on outcomes that actually matter to your career.</p>
           </div>
           <div className="trust-grid">
@@ -80,22 +90,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="programs" className="section-wrapper dark-section">
-        <div className="container">
-          <div className="section-header">
-            <p className="section-tag">Programs</p>
-            <h2>Choose Your Learning Track</h2>
-            <p className="section-intro">High-demand programs built for real engineering roles — not just certifications.</p>
-          </div>
-          <CourseCatalogGrid />
-        </div>
-      </section>
+      <LiveCoursesSection />
+
+      <HeroTrustMarquee />
 
       <section id="hiring-partners" className="section-wrapper hiring-partners-section">
         <div className="container">
           <div className="section-header hiring-partners-header">
-            <p className="section-tag hiring-partners-tag">Hiring Partners</p>
-            <h2>Our Local Hiring Partners</h2>
+            <h2 className="section-title">Our Local Hiring Partners</h2>
             <p className="section-intro">
               Product and IT teams in Indore and Pune that hire for Java, Spring, cloud, and full stack skills — the network we train you for.
             </p>

@@ -49,7 +49,20 @@ export const placedCompanyLogos: Record<string, string> = {
   Persistent: "/partners/placed/persistent.svg",
   Wipro: "/partners/placed/wipro.svg",
   HCLTech: "/partners/placed/hcltech.svg",
-  LTIMindtree: "/partners/placed/ltimindtree.svg"
+  LTIMindtree: "/partners/placed/ltimindtree.svg",
+  Google: "/partners/placed/google.svg",
+  Microsoft: "/partners/placed/microsoft.svg",
+  Meta: "/partners/placed/meta.svg",
+  IBM: "/partners/placed/ibm.svg",
+  Oracle: "/partners/placed/oracle.svg",
+  Salesforce: "/partners/placed/salesforce.svg",
+  PayPal: "/partners/placed/paypal.svg",
+  Adobe: "/partners/placed/adobe.svg",
+  "Goldman Sachs": "/partners/placed/goldmansachs.svg",
+  Flipkart: "/partners/placed/flipkart.svg",
+  "J.P. Morgan": "/partners/placed/jpmorgan.svg",
+  Samsung: "/partners/placed/samsung.svg",
+  NVIDIA: "/partners/placed/nvidia.svg"
 };
 
 /** Shared placement-support steps shown on career-focused course pages */
