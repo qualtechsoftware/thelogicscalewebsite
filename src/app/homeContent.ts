@@ -95,8 +95,8 @@ export const careerSupportSteps = [
     detail: "Target roles, refine applications, and stay consistent with a clear weekly outreach plan."
   },
   {
-    title: "Offer readiness",
-    detail: "Prep for final rounds and salary conversations so you can choose the right opportunity with confidence."
+    title: "MNC referrals",
+    detail: "We help you get referrals into top MNCs through our hiring network and alumni connections."
   }
 ] as const;
 
@@ -128,7 +128,7 @@ export const trustPillars = [
   {
     num: "04",
     icon: "/icons/trust-flexible.png",
-    color: "#a855f7",
+    color: "#2563eb",
     title: "Flexible Learning",
     details:
       "Programs are delivered online: live sessions you can join from anywhere, structured weekly milestones, and ongoing access to recordings so you can revisit AWS and AI topics on your own time."

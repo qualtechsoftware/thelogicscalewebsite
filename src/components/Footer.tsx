@@ -3,9 +3,14 @@ export default function Footer() {
 
   return (
     <footer className="site-footer">
+      <div className="site-footer-atmosphere" aria-hidden="true">
+        <span className="site-footer-orb site-footer-orb--sky" />
+        <span className="site-footer-orb site-footer-orb--amber" />
+      </div>
       <div className="container site-footer-inner">
         <div className="site-footer-brand">
           <a href="/" className="site-footer-logo-link">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/footer-logo.png" alt="The Logic Scale" className="site-footer-logo" />
           </a>
           <p className="site-footer-tagline">

@@ -1,7 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Footer from "@/components/Footer";
+import MobileBottomNav from "@/components/MobileBottomNav";
 import SiteHeader from "@/components/SiteHeader";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
+import ScrollToTopOnNavigate from "@/components/ScrollToTopOnNavigate";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import Script from "next/script";
 import "./globals.css";
@@ -10,6 +12,11 @@ export const metadata: Metadata = {
   title: "The Logic Scale | Software Training Programs",
   description:
     "Professional software engineering training for students, teams, and working professionals.",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "The Logic Scale"
+  },
   icons: {
     icon: [
       { url: "/favicon.png?v=4", type: "image/png" },
@@ -18,6 +25,16 @@ export const metadata: Metadata = {
     shortcut: { url: "/favicon.png?v=4", type: "image/png" },
     apple: { url: "/apple-touch-icon.png?v=4", sizes: "180x180", type: "image/png" }
   }
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b1c30" }
+  ]
 };
 
 export default function RootLayout({
@@ -46,12 +63,14 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>
+      <body className="app-shell">
+        <ScrollToTopOnNavigate />
         <SiteHeader />
-        {children}
+        <div className="app-shell-main">{children}</div>
         <Footer />
         <ScrollToTopButton />
         <WhatsAppFloat />
+        <MobileBottomNav />
       </body>
     </html>
   );

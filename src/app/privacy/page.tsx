@@ -8,8 +8,13 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <main className="legal-page">
+      <div className="legal-atmosphere" aria-hidden="true">
+        <span className="legal-orb legal-orb--sky" />
+        <span className="legal-orb legal-orb--amber" />
+      </div>
       <div className="container legal-page-inner">
         <a className="legal-back" href="/">← Back to home</a>
+        <p className="section-tag">Legal</p>
         <h1>Privacy Policy</h1>
         <p>
           This Privacy Policy explains how The Logic Scale handles personal information when you use

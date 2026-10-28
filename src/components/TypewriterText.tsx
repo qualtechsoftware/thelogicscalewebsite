@@ -41,6 +41,7 @@ export default function TypewriterText({ words }: TypewriterTextProps) {
   return (
     <span className="typewriter-text">
       {displayedText || "\u00A0"}
+      <span className="typewriter-cursor" aria-hidden="true" />
     </span>
   );
 }

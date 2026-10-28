@@ -18,19 +18,15 @@ export default function SiteHeader() {
   return (
     <header className="topbar">
       <div className="announce-banner" role="region" aria-label="AWS batch announcement">
+        <div className="announce-banner-glow" aria-hidden="true" />
         <div className="announce-banner-track" aria-hidden="true" />
         <div className="container announce-banner-inner">
           <span className="announce-banner-batch">
-            <span className="announce-banner-batch-mark" aria-hidden="true">
-              AWS
-            </span>
-            Batch live
+            <span className="announce-banner-live" aria-hidden="true" />
+            <span className="announce-banner-batch-mark">AWS</span>
+            <span className="announce-banner-batch-label">Batch live</span>
           </span>
           <p className="announce-banner-text">
-            <strong>AWS Batch is live</strong>
-            <span className="announce-banner-sep" aria-hidden="true">
-              —
-            </span>
             Limited seats left in this cohort. Secure your spot today!
           </p>
           <ConnectMentorModal
@@ -48,14 +44,26 @@ export default function SiteHeader() {
             <a className="brand" href="/">
               <img src="/thelogicscale-logo.png" alt="The Logic Scale" className="brand-logo" />
             </a>
-            <div className="courses-menu">
+            <div className="courses-menu courses-menu--desktop">
               <a className="courses-trigger" href="/courses">
                 <span>Explore Courses</span>
-                <span className="courses-trigger-icon" aria-hidden="true">↗</span>
+                <span className="courses-trigger-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M7 17L17 7" />
+                    <path d="M9 7h8v8" />
+                  </svg>
+                </span>
               </a>
               <div className="courses-dropdown" role="menu" aria-label="Course programs">
+                <div className="courses-dropdown-head">
+                  <p className="courses-dropdown-kicker">Programs</p>
+                  <p className="courses-dropdown-title">Pick a track to get started</p>
+                </div>
                 <div className="courses-dropdown-body">
-                  <p className="courses-dropdown-group" id="menu-aws">AWS certifications</p>
+                  <p className="courses-dropdown-group" id="menu-aws">
+                    <span className="courses-dropdown-group-dot is-aws" aria-hidden="true" />
+                    AWS certifications
+                  </p>
                   {awsCourses.map((c) => (
                     <a key={c.href} href={c.href} className="courses-dropdown-item is-aws" role="menuitem">
                       <span className="courses-item-main">
@@ -74,7 +82,10 @@ export default function SiteHeader() {
                       </span>
                     </a>
                   ))}
-                  <p className="courses-dropdown-group" id="menu-spring">Spring &amp; AI</p>
+                  <p className="courses-dropdown-group" id="menu-spring">
+                    <span className="courses-dropdown-group-dot is-spring" aria-hidden="true" />
+                    Spring &amp; AI
+                  </p>
                   {springCourses.map((c) => (
                     <a key={c.href} href={c.href} className="courses-dropdown-item is-spring" role="menuitem">
                       <span className="courses-item-main">
@@ -98,6 +109,12 @@ export default function SiteHeader() {
                     </a>
                   ))}
                 </div>
+                <a className="courses-dropdown-footer" href="/courses">
+                  View all courses
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+                    <path d="M5 12h14M13 5l7 7-7 7" />
+                  </svg>
+                </a>
               </div>
             </div>
           </div>

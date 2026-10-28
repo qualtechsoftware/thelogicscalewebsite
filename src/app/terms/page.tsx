@@ -8,8 +8,13 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <main className="legal-page">
+      <div className="legal-atmosphere" aria-hidden="true">
+        <span className="legal-orb legal-orb--sky" />
+        <span className="legal-orb legal-orb--amber" />
+      </div>
       <div className="container legal-page-inner">
         <a className="legal-back" href="/">← Back to home</a>
+        <p className="section-tag">Legal</p>
         <h1>Terms of Service</h1>
         <p>
           These Terms set out the rules for using our website and interacting with our training and

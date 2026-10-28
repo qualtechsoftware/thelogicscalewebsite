@@ -10,18 +10,31 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <main className="contact-page">
+      <div className="contact-atmosphere" aria-hidden="true">
+        <span className="contact-orb contact-orb--sky" />
+        <span className="contact-orb contact-orb--amber" />
+        <span className="contact-grid" />
+      </div>
       <div className="container contact-layout">
         <div className="contact-col contact-col--copy">
+          <p className="section-tag">Get in touch</p>
           <h1>Contact us</h1>
           <p className="contact-page-lead">
             Tell us what you&apos;re aiming for—we&apos;ll help you choose a track and, if it helps, book a free call with
             a mentor. No pressure.
           </p>
           <p className="contact-page-email">
-            Email:{" "}
-            <a className="legal-contact-link" href="mailto:info@thelogicscale.com">
-              info@thelogicscale.com
-            </a>
+            <span className="contact-email-chip">
+              <span className="contact-email-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width={16} height={16} fill="none" stroke="currentColor" strokeWidth={1.9} strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <path d="m3 7 9 6 9-6" />
+                </svg>
+              </span>
+              <a className="legal-contact-link" href="mailto:info@thelogicscale.com">
+                info@thelogicscale.com
+              </a>
+            </span>
           </p>
 
           <div className="contact-mentor-copy">
@@ -61,7 +74,6 @@ export default function ContactPage() {
                 <p className="contact-benefit-text">No pressure—just guidance and honest advice</p>
               </div>
             </div>
-
           </div>
         </div>
 

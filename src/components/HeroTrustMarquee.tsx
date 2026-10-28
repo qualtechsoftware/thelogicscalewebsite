@@ -61,7 +61,11 @@ export default function HeroTrustMarquee() {
     <section className="trust-marquee" aria-label="Alumni companies">
       <div className="container trust-marquee-inner">
         <div className="trust-marquee-head">
+          <p className="trust-marquee-eyebrow">Alumni outcomes</p>
           <h2 className="section-title trust-marquee-title">3+ years of transforming careers</h2>
+          <p className="trust-marquee-lead">
+            Learners placed across product, consulting, and cloud teams at companies like these.
+          </p>
         </div>
 
         <ul className="trust-marquee-logo-wall">

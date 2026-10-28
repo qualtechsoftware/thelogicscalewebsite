@@ -44,7 +44,14 @@ export default function LiveCoursesSection() {
     <section id="live-courses" className="section-wrapper live-courses-section">
       <div className="container">
         <div className="section-header live-courses-header">
+          <p className="section-tag live-courses-tag">
+            <span className="live-courses-tag-dot" aria-hidden="true" />
+            Enrolling now
+          </p>
           <h2 className="section-title">Our Live Courses</h2>
+          <p className="section-intro">
+            Open cohorts with limited seats — join a live batch and learn with mentors in real time.
+          </p>
         </div>
 
         <div className="live-course-rows">
@@ -54,8 +61,10 @@ export default function LiveCoursesSection() {
               className={`live-course-row live-course-row--${course.markTone}`}
               style={{ "--live-accent": course.accent } as CSSProperties}
             >
+              <div className="live-course-row-glow" aria-hidden="true" />
               <div className="live-course-row-inner">
                 <span className="live-course-row-batch">
+                  <span className="live-course-row-live" aria-hidden="true" />
                   <span className="live-course-row-mark" aria-hidden="true">
                     {course.mark}
                   </span>
