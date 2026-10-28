@@ -27,7 +27,10 @@ export default function SiteHeader() {
             <span className="announce-banner-batch-label">Batch live</span>
           </span>
           <p className="announce-banner-text">
-            Limited seats left in this cohort. Secure your spot today!
+            <span className="announce-banner-text-full">
+              Limited seats left in this cohort. Secure your spot today!
+            </span>
+            <span className="announce-banner-text-short">Limited seats — enroll today</span>
           </p>
           <ConnectMentorModal
             className="announce-banner-cta"

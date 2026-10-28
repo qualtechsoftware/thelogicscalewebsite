@@ -169,7 +169,9 @@ export default function ConnectMentorModal({
               </p>
             ) : null}
             <div className="mentor-modal-field">
-              <label htmlFor="mentor-modal-name">Full name</label>
+              <label htmlFor="mentor-modal-name">
+                Full name <span className="mentor-modal-req" aria-hidden="true">*</span>
+              </label>
               <input
                 id="mentor-modal-name"
                 type="text"

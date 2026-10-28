@@ -70,13 +70,13 @@ export default function LiveCoursesSection() {
                   </span>
                   Batch live
                 </span>
-                <p className="live-course-row-text">
-                  <strong>{course.headline}</strong>
+                <div className="live-course-row-copy">
+                  <strong className="live-course-row-headline">{course.headline}</strong>
                   <span className="live-course-row-sep" aria-hidden="true">
                     —
                   </span>
-                  {course.support}
-                </p>
+                  <span className="live-course-row-support">{course.support}</span>
+                </div>
                 <ConnectMentorModal
                   className="live-course-row-cta"
                   label="Enroll now →"
