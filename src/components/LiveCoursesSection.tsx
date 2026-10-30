@@ -2,12 +2,16 @@
 
 import type { CSSProperties } from "react";
 import ConnectMentorModal from "@/components/ConnectMentorModal";
+import {
+  AwsCertMenuIcon,
+  JavaMenuIcon,
+  SpringAiMenuIcon
+} from "@/components/NavCourseMenuIcons";
 
 const liveCourses = [
   {
     id: "aws-developer",
-    mark: "AWS",
-    markTone: "aws",
+    markTone: "aws" as const,
     headline: "AWS Developer Associate is live",
     support: "Limited seats left in this cohort. Secure your spot today!",
     title: "Enroll in AWS Developer Associate",
@@ -17,8 +21,7 @@ const liveCourses = [
   },
   {
     id: "java-fullstack",
-    mark: "JAVA",
-    markTone: "java",
+    markTone: "java" as const,
     headline: "Java Full Stack Developer is live",
     support: "Limited seats left in this cohort. Secure your spot today!",
     title: "Enroll in Java Full Stack Developer",
@@ -28,8 +31,7 @@ const liveCourses = [
   },
   {
     id: "spring-ai",
-    mark: "AI",
-    markTone: "ai",
+    markTone: "ai" as const,
     headline: "Spring AI is live",
     support: "Limited seats left in this cohort. Secure your spot today!",
     title: "Enroll in Spring AI",
@@ -38,6 +40,12 @@ const liveCourses = [
     accent: "#f59e0b"
   }
 ] as const;
+
+function LiveCourseMark({ tone }: { tone: (typeof liveCourses)[number]["markTone"] }) {
+  if (tone === "aws") return <AwsCertMenuIcon size={34} />;
+  if (tone === "java") return <JavaMenuIcon size={22} />;
+  return <SpringAiMenuIcon size={22} />;
+}
 
 export default function LiveCoursesSection() {
   return (
@@ -66,7 +74,7 @@ export default function LiveCoursesSection() {
                 <span className="live-course-row-batch">
                   <span className="live-course-row-live" aria-hidden="true" />
                   <span className="live-course-row-mark" aria-hidden="true">
-                    {course.mark}
+                    <LiveCourseMark tone={course.markTone} />
                   </span>
                   Batch live
                 </span>

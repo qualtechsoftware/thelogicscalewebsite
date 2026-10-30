@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import Footer from "@/components/Footer";
 import MobileBottomNav from "@/components/MobileBottomNav";
 import SiteHeader from "@/components/SiteHeader";
@@ -7,6 +8,13 @@ import ScrollToTopOnNavigate from "@/components/ScrollToTopOnNavigate";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import Script from "next/script";
 import "./globals.css";
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-sans",
+  weight: ["400", "500", "600", "700", "800"]
+});
 
 export const metadata: Metadata = {
   title: "The Logic Scale | Software Training Programs",
@@ -45,7 +53,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth">
+    <html lang="en" data-scroll-behavior="smooth" className={plusJakarta.variable}>
       <head>
         {/* Google Analytics (gtag.js) */}
         <Script
@@ -65,7 +73,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="app-shell">
+      <body className={`app-shell ${plusJakarta.className}`}>
         <ScrollToTopOnNavigate />
         <SiteHeader />
         <div className="app-shell-main">{children}</div>
