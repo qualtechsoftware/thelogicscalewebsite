@@ -27,8 +27,13 @@ export default function HomePage() {
                 Trusted by 4000+ Learners
               </div>
               <h1>
-                <span className="hero-title-line">Empowering Your</span>
-                <span className="hero-title-line">Career with</span>
+                <span className="hero-title-desktop">
+                  <span className="hero-title-line">Empowering Your</span>
+                  <span className="hero-title-line">Career with</span>
+                </span>
+                <span className="hero-title-mobile">
+                  <span className="hero-title-line">Empowering Your Career with</span>
+                </span>
                 <span className="hero-title-line hero-title-dynamic">
                   <TypewriterText
                     words={[

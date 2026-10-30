@@ -1,12 +1,6 @@
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import ContactMentorForm from "@/components/ContactMentorForm";
-import {
-  AwsCertMenuIcon,
-  JavaMenuIcon,
-  SpringAiMenuIcon,
-  SpringBootMenuIcon
-} from "@/components/NavCourseMenuIcons";
 
 export const metadata: Metadata = {
   title: "Contact Us | The Logic Scale",
@@ -38,20 +32,11 @@ const callBenefits = [
 function BenefitIcon({ tone }: { tone: (typeof callBenefits)[number]["tone"] }) {
   if (tone === "tracks") {
     return (
-      <span className="contact-benefit-brands" aria-hidden="true">
-        <span className="contact-benefit-brand is-aws">
-          <AwsCertMenuIcon size={36} />
-        </span>
-        <span className="contact-benefit-brand is-java">
-          <JavaMenuIcon size={24} />
-        </span>
-        <span className="contact-benefit-brand is-spring-ai">
-          <SpringAiMenuIcon size={24} />
-        </span>
-        <span className="contact-benefit-brand is-spring-boot">
-          <SpringBootMenuIcon size={24} />
-        </span>
-      </span>
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="8.25" stroke="currentColor" strokeWidth="2.1" />
+        <path d="M12 7.2v4.4l2.8 2.8" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="12" cy="12" r="1.35" fill="currentColor" />
+      </svg>
     );
   }
 
@@ -127,11 +112,11 @@ export default function ContactPage() {
               {callBenefits.map((item) => (
                 <article
                   key={item.title}
-                  className={`contact-benefit-card${item.tone === "tracks" ? " contact-benefit-card--tracks" : ""}`}
+                  className="contact-benefit-card"
                   style={{ "--card-accent": item.color } as CSSProperties}
                 >
                   <span className="contact-benefit-glow" aria-hidden="true" />
-                  <span className={`contact-benefit-icon${item.tone === "tracks" ? " contact-benefit-icon--brands" : ""}`} aria-hidden="true">
+                  <span className="contact-benefit-icon" aria-hidden="true">
                     <BenefitIcon tone={item.tone} />
                   </span>
                   <div className="contact-benefit-copy">

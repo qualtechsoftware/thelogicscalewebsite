@@ -58,7 +58,7 @@ export default function SiteHeader() {
         <nav className="navbar">
           <div className="nav-left">
             <a className="brand" href="/">
-              <img src="/thelogicscale-logo.png" alt="The Logic Scale" className="brand-logo" />
+              <img src="/thelogicscale-logo.png?v=2" alt="The Logic Scale" className="brand-logo" />
             </a>
             <div className="courses-menu courses-menu--desktop">
               <a className="courses-trigger" href="/courses">
@@ -76,11 +76,6 @@ export default function SiteHeader() {
                   <div className="courses-dropdown-atmosphere" aria-hidden="true">
                     <span className="courses-dropdown-orb courses-dropdown-orb--sky" />
                     <span className="courses-dropdown-orb courses-dropdown-orb--amber" />
-                  </div>
-                  <div className="courses-dropdown-head">
-                    <p className="section-tag courses-dropdown-tag">Course catalog</p>
-                    <p className="courses-dropdown-title">Explore our programs</p>
-                    <p className="courses-dropdown-lead">Mentor-led tracks in AWS, Spring, and AI.</p>
                   </div>
                   <div className="courses-dropdown-body">
                     <div className="courses-dropdown-col" aria-labelledby="menu-aws">
@@ -144,7 +139,6 @@ export default function SiteHeader() {
                   <a className="courses-dropdown-footer" href="/courses">
                     <span className="courses-dropdown-footer-copy">
                       <span className="courses-dropdown-footer-label">Browse full catalog</span>
-                      <span className="courses-dropdown-footer-sub">All tracks, filters, and details</span>
                     </span>
                     <span className="courses-dropdown-footer-arrow" aria-hidden="true">
                       <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2">
