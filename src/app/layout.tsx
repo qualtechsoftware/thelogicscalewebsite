@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     statusBarStyle: "default",
     title: "The Logic Scale"
   },
+  formatDetection: {
+    telephone: false
+  },
   icons: {
     icon: [
       { url: "/favicon.png?v=4", type: "image/png" },
@@ -30,11 +33,10 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  maximumScale: 5,
   viewportFit: "cover",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0b1c30" }
-  ]
+  themeColor: "#ffffff",
+  colorScheme: "light"
 };
 
 export default function RootLayout({
@@ -43,7 +45,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <head>
         {/* Google Analytics (gtag.js) */}
         <Script

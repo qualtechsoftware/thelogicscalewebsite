@@ -126,11 +126,12 @@ export default function ConnectMentorModal({
           aria-labelledby={titleId}
         >
           <div className="mentor-modal-accent" aria-hidden="true" />
+          <div className="mentor-modal-handle" aria-hidden="true" />
 
           <div className="mentor-modal-head">
             <div className="mentor-modal-title-row">
               <div className="mentor-modal-icon-wrap" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width={22} height={22} fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round">
+                <svg viewBox="0 0 24 24" width={20} height={20} fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round">
                   <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
                   <circle cx="9" cy="7" r="4" />
                   <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
@@ -138,9 +139,9 @@ export default function ConnectMentorModal({
               </div>
               <div className="mentor-modal-title-block">
                 <p className="mentor-modal-eyebrow">{eyebrow}</p>
-                <h2 id={titleId} className="mentor-modal-title">
+                <p id={titleId} className="mentor-modal-title" role="heading" aria-level={2}>
                   {title}
-                </h2>
+                </p>
               </div>
             </div>
             <button
@@ -151,7 +152,7 @@ export default function ConnectMentorModal({
               aria-label="Close dialog"
               disabled={status === "sending"}
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
                 <path d="M18 6L6 18M6 6l12 12" />
               </svg>
             </button>

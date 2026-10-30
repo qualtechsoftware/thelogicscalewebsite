@@ -11,10 +11,16 @@ export default function Footer() {
         <div className="site-footer-brand">
           <a href="/" className="site-footer-logo-link">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/footer-logo.png" alt="The Logic Scale" className="site-footer-logo" />
+            <img
+              src="/footer-logo.png"
+              alt="The Logic Scale"
+              className="site-footer-logo"
+              width={215}
+              height={75}
+            />
           </a>
           <p className="site-footer-tagline">
-            Practical training in AWS, Spring, and AI—mentor-led, project-based, built for College students & working professionals.
+            Practical training in AWS, Spring, and AI—mentor-led, project-based, built for college students &amp; working professionals.
           </p>
         </div>
 
@@ -31,9 +37,10 @@ export default function Footer() {
             <p className="site-footer-heading">Get started</p>
             <ul>
               <li><a href="/contact">Book a free session</a></li>
+              <li><a href="mailto:info@thelogicscale.com">Email us</a></li>
             </ul>
           </div>
-          <div className="site-footer-col">
+          <div className="site-footer-col site-footer-col--contact">
             <p className="site-footer-heading">Contact</p>
             <ul>
               <li>

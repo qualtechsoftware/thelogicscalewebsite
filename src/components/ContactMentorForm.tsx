@@ -72,7 +72,7 @@ export default function ContactMentorForm() {
         Goals or questions
         <textarea
           name="goals"
-          rows={4}
+          rows={3}
           placeholder="What you want to learn, your timeline, AWS vs Spring vs AI, etc."
           className="lead-form-textarea"
           disabled={status === "sending"}

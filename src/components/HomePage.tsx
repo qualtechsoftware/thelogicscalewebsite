@@ -6,7 +6,8 @@ import TypewriterText from "@/components/TypewriterText";
 import CourseCatalogGrid from "@/components/CourseCatalogGrid";
 import HeroTrustMarquee from "@/components/HeroTrustMarquee";
 import LiveCoursesSection from "@/components/LiveCoursesSection";
-import { hiringPartners, trustPillars } from "@/app/homeContent";
+import HiringPartnersSection from "@/components/HiringPartnersSection";
+import { trustPillars } from "@/app/homeContent";
 
 
 export default function HomePage() {
@@ -149,56 +150,7 @@ export default function HomePage() {
 
       <HeroTrustMarquee />
 
-      <section id="hiring-partners" className="section-wrapper hiring-partners-section">
-        <div className="hiring-partners-atmosphere" aria-hidden="true">
-          <span className="hiring-partners-orb hiring-partners-orb--sky" />
-          <span className="hiring-partners-orb hiring-partners-orb--navy" />
-        </div>
-        <div className="container">
-          <div className="section-header hiring-partners-header">
-            <p className="section-tag hiring-partners-tag">Local network</p>
-            <h2 className="section-title">Our Local Hiring Partners</h2>
-            <p className="section-intro">
-              Product and IT teams in Indore and Pune that hire for Java, Spring, cloud, and full stack skills — the network we train you for.
-            </p>
-          </div>
-
-          {(["Indore", "Pune"] as const).map((city) => {
-            const cityPartners = hiringPartners.filter((p) => p.city === city);
-            return (
-              <div key={city} className="hiring-partners-city-block">
-                <div className="hiring-partners-city-label">
-                  <span className="hiring-partners-city-dot" aria-hidden="true" />
-                  <h3>{city}</h3>
-                  <span className="hiring-partners-city-count">{cityPartners.length} partners</span>
-                </div>
-                <div className="hiring-partners-grid">
-                  {cityPartners.map((partner) => (
-                    <article key={partner.name} className="hiring-partner-card">
-                      <div
-                        className={`hiring-partner-logo-plate${
-                          partner.logoTone === "dark" ? " hiring-partner-logo-plate--dark" : ""
-                        }`}
-                      >
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={partner.logo} alt="" className="hiring-partner-logo" />
-                      </div>
-                      <div className="hiring-partner-meta">
-                        <h4 className="hiring-partner-name">{partner.name}</h4>
-                        <p className="hiring-partner-focus">{partner.focus}</p>
-                      </div>
-                    </article>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-
-          <p className="hiring-partners-note">
-            Interview prep and local introductions across this network. Roles depend on cohort timing and fit.
-          </p>
-        </div>
-      </section>
+      <HiringPartnersSection />
 
       <section className="section-wrapper cta-section">
         <div className="cta-atmosphere" aria-hidden="true">
@@ -210,7 +162,7 @@ export default function HomePage() {
           <p className="section-tag cta-tag">Free mentorship session</p>
           <h2>Ready to reskill for what&apos;s next?</h2>
           <p className="cta-sub">
-            Book a free call with a mentor. We&apos;ll map your goals to the right track—AWS, Spring, or AI—no obligation.
+            Book a free call with a mentor. We&apos;ll map your goals to the right track—AWS, Spring, or AI—and answer your questions with care.
           </p>
           <div className="cta-actions">
             <ConnectMentorModal className="button btn-primary cta-btn-primary" showIcon />

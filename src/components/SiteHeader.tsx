@@ -1,5 +1,6 @@
 import { AwsCertMenuIcon, SpringAiMenuIcon, SpringStackMenuIcon } from "@/components/NavCourseMenuIcons";
 import ConnectMentorModal from "@/components/ConnectMentorModal";
+import MobileMoreMenu from "@/components/MobileMoreMenu";
 
 const awsCourses = [
   { href: "/programs/aws-cloud-practitioner", label: "AWS Cloud Practitioner" },
@@ -36,7 +37,7 @@ export default function SiteHeader() {
             className="announce-banner-cta"
             label="Enroll now →"
             eyebrow="AWS batch enrollment"
-            title="Enroll in the live AWS batch"
+            title="Enroll in AWS batch"
             subject="The Logic Scale — AWS Batch enrollment"
           />
         </div>
@@ -121,22 +122,7 @@ export default function SiteHeader() {
               </div>
             </div>
           </div>
-          <details className="mobile-nav-details">
-            <summary className="mobile-nav-summary" aria-label="Open menu">
-              <span className="mobile-hamburger" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width={22} height={22} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
-                  <path d="M4 7h16" />
-                  <path d="M4 12h16" />
-                  <path d="M4 17h16" />
-                </svg>
-              </span>
-            </summary>
-            <div className="mobile-nav-links" aria-label="Mobile navigation links">
-              <a href="/#hiring-partners">Hiring Partners</a>
-              <a href="/about">About Us</a>
-              <a href="/contact">Contact Us</a>
-            </div>
-          </details>
+          <MobileMoreMenu />
 
           <div className="nav-links nav-right">
             <a href="/#hiring-partners">Hiring Partners</a>
