@@ -46,6 +46,12 @@ export default function Footer() {
               <li>
                 <a href="mailto:info@thelogicscale.com">info@thelogicscale.com</a>
               </li>
+              <li className="site-footer-address">
+                <svg viewBox="0 0 24 24" width={16} height={16} fill="currentColor" aria-hidden="true">
+                  <path d="M12 2.5a7.25 7.25 0 0 0-7.25 7.25c0 5.2 6.1 11.05 6.72 11.64a.77.77 0 0 0 1.06 0c.62-.59 6.72-6.44 6.72-11.64A7.25 7.25 0 0 0 12 2.5Zm0 9.9a2.65 2.65 0 1 1 0-5.3 2.65 2.65 0 0 1 0 5.3Z" />
+                </svg>
+                <span>4th Floor, THE ARC, Behind TCS, Super Corridor, Indore, 453112</span>
+              </li>
             </ul>
           </div>
         </nav>

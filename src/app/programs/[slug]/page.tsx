@@ -992,7 +992,6 @@ export default async function ProgramDetailPage({ params }: Props) {
                   />
                   <p className="course-detail-banner-provider">{providerLabel}</p>
                 </div>
-                <h3>{course.examCode}</h3>
                 <span className="course-detail-banner-subtitle">
                   {course.enrolled} enrolled · mentor-led · weekend-friendly
                 </span>

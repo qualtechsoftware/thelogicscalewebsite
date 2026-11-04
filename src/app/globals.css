@@ -6557,6 +6557,23 @@ h2,
   color: #f1f5f9;
 }
 
+.site-footer-address {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  max-width: 16rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #c8d7e8;
+}
+
+.site-footer-address svg {
+  flex-shrink: 0;
+  margin-top: 0.12rem;
+  color: #7dd3fc;
+}
+
 .site-footer-bottom {
   position: relative;
   z-index: 1;
@@ -7158,6 +7175,19 @@ h2,
   color: #fff;
   background: linear-gradient(145deg, #0ea5e9 0%, #0284c7 100%);
   box-shadow: 0 6px 14px rgba(2, 132, 199, 0.28);
+}
+
+.contact-page-address {
+  margin-top: 0.6rem;
+}
+
+/* Long text can wrap on narrow screens, where a full pill radius looks wrong */
+.contact-page-address .contact-email-chip {
+  border-radius: 1.1rem;
+}
+
+.contact-page-address .contact-email-icon {
+  flex-shrink: 0;
 }
 
 .contact-page .legal-contact-link {
@@ -8049,6 +8079,11 @@ h2,
 
   .site-footer-col a {
     font-size: 0.82rem !important;
+  }
+
+  .site-footer-address {
+    max-width: none;
+    font-size: 0.82rem;
   }
 
   .site-footer-bottom-inner {
